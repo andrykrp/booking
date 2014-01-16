@@ -9,6 +9,13 @@
 * Tomcat 7
 * Java 7
 
-----
-## changelog
+
+**layout picture**
+
+* [Home page](https://github.com/andrykrp/booking/blob/master/pic/home_page.png)
+* [Hotel preview](https://github.com/andrykrp/booking/blob/master/pic/hotel_view.png)
+* [Search result](https://github.com/andrykrp/booking/blob/master/pic/search_results.png)
+
+**changelog**
+
 * 15-Jan-2014 init project
