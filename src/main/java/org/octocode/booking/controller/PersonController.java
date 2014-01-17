@@ -5,9 +5,9 @@ import org.octocode.booking.model.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/")
@@ -33,4 +33,9 @@ public class PersonController {
 		model.addAttribute("message", person == null ? "Hello world!" : person.toString());
 		return "layout/home";
 	}
+
+    @RequestMapping("/persons")
+    public @ResponseBody List<Person> persons() {
+        return personRepository.findAll();
+    }
 }

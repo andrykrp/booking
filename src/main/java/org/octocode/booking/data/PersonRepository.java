@@ -34,11 +34,14 @@ import org.octocode.booking.model.Person;
 import org.springframework.dao.DataAccessException;
 
 import java.util.Collection;
+import java.util.List;
 
 public interface PersonRepository {
     Collection<Person> findByLastName(String lastName) throws DataAccessException;
 
     Person findById(int id) throws DataAccessException;
+
+    List<Person> findAll() throws DataAccessException;
 
     void save(Person person) throws DataAccessException;
 }
