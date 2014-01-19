@@ -1,5 +1,5 @@
 <html>
-<head><title>ViralPatel.net - FreeMarker Spring MVC Hello World</title>
+<head><title>Hotels global booking</title></head>
 <body>
 <div id="header">
     <H2>
@@ -10,7 +10,7 @@
 <div id="content">
     <table class="datatable">
         <tr>
-            <th>Firstname</th>  <th>Lastname</th>
+            <th>Firstname</th>  <th>Lastname</th>  <th>Address</th>  <th>City</th>  <th>Phone No.</th>
         </tr>
     <#--<#list model["userList"] as user>-->
         <#--<tr>-->
@@ -18,9 +18,28 @@
         <#--</tr>-->
     <#--</#list>-->
         <tr>
-            <td>${model["userList"]}</td>
-        </tr>
+        <!--#list model?keys as key-->
+        <#if model["userList"]??>
+        <#list model["userList"] as user>
+            <!--#assign value = model[key]-->
+            <tr>
+            <td>${user.firstName}</td>
+            <td>${user.lastName}</td>
+            <td>${user.address}</td>
+            <td>${user.city}</td>
+            <td>${user.telephone}</td>
+            </tr>
+        </#list>
+        <#else>
+        <td colspan=5>No users retrieved from database</td>
+        </#if>
     </table>
+
+    <#if model["logged_in_user"]??>
+        <p>You are currently logged in as ${model["logged_in_user"].firstName} ${model["logged_in_user"].lastName} </p>
+    <#else>
+        <p>You are not logged in. Please proceed to <a href="/login">Login page</a></p>
+    </#if>
 
 </div>
 </body>

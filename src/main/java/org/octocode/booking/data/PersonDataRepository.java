@@ -20,6 +20,14 @@ public interface PersonDataRepository extends PersonRepository, Repository<Perso
     public Person findById(@Param("id") int id);
 
     @Override
+    @Query("SELECT person FROM Person person WHERE person.username =:username")
+    public Person findByUsername(@Param("username") String user);
+
+    @Override
     @Query("select person from Person person")
     public List<Person> findAll();
+
+    //@Override
+    //@Query("UPDATE person from Person person")
+    //public void save(Person person);
 }

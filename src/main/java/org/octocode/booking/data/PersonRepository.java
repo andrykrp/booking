@@ -41,6 +41,8 @@ public interface PersonRepository {
 
     Person findById(int id) throws DataAccessException;
 
+    Person findByUsername(String user) throws DataAccessException;
+
     List<Person> findAll() throws DataAccessException;
 
     void save(Person person) throws DataAccessException;

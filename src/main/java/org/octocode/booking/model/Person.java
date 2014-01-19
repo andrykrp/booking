@@ -16,6 +16,14 @@ public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Integer id;
+
+    @Column(name = "username")
+    @NotEmpty
+    protected String username;
+
+    @Column(name = "password")
+    @NotEmpty
+    protected String password;
     @Column(name = "first_name")
     @NotEmpty
     protected String firstName;
@@ -43,6 +51,22 @@ public class Person {
 
     public boolean isNew() {
         return (this.id == null);
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getFirstName() {
