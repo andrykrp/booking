@@ -29,7 +29,8 @@ public class PersonController {
 
     @RequestMapping(value = "/userProfile/{username}", method = RequestMethod.GET)
     public String editProfile(@PathVariable("username") String user, @ModelAttribute("model") ModelMap model) {
-        Person person = personRepository.findByUsername(user);
+        Person person = (Person)model.get("logged_in_user");
+        if (person == null) person = personRepository.findByUsername(user);
         model.addAttribute("user", person);
         return "edit_profile";
     }
@@ -43,7 +44,9 @@ public class PersonController {
                               @RequestParam("city") String city,
                               @RequestParam("telephone") String phone,
                               @ModelAttribute("model") ModelMap model) {
-        Person person = new Person();
+        //Person p1 = (Person)model.get("user");
+        Person p2 = (Person)model.get("logged_in_user");
+        Person person = (Person)model.get("logged_in_user");
         person.setId(id);
         person.setUsername(user);
         person.setFirstName(fn);

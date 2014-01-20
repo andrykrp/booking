@@ -36,7 +36,8 @@
     </table>
 
     <#if model["logged_in_user"]??>
-        <p>You are currently logged in as ${model["logged_in_user"].firstName} ${model["logged_in_user"].lastName} </p>
+        <p>You are currently logged in as ${model["logged_in_user"].firstName} ${model["logged_in_user"].lastName}.
+        To edit your personal data please proceed to <a href="/userProfile/${model["logged_in_user"].username}">user profile page</a>.</p>
     <#else>
         <p>You are not logged in. Please proceed to <a href="/login">Login page</a></p>
     </#if>
