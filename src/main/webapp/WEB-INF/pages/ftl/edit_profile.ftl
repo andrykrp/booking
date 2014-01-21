@@ -3,7 +3,7 @@
 <body>
 <div id="header">
     <H2>
-        index
+        Please edit your personal profile, username ${user.username}
     </H2>
 </div>
 
@@ -11,13 +11,6 @@
     <table class="profiletable">
         <#assign user = model["user"]>
         <form action="/saveUser" method="post" class="form-horizontal" role="form">
-            <input type="hidden" id="id" value="${user.id}" name="id">
-        <tr>
-            <th>User name: </th>
-            <td>
-                <input type="text" id="username" value="${user.username}" name="username">
-            </td>
-        </tr>
         <tr>
             <th>First name:</th>
             <td>
