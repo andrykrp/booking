@@ -4,6 +4,7 @@ import org.octocode.booking.data.PersonRepository;
 import org.octocode.booking.model.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
@@ -35,6 +36,7 @@ public class PersonController {
         return "edit_profile";
     }
 
+    @Transactional
     @RequestMapping(value = "/saveUser", method = RequestMethod.POST)
     public String saveProfile(@RequestParam("firstName") String fn,
                               @RequestParam("lastName") String ln,
@@ -51,7 +53,7 @@ public class PersonController {
         person.setTelephone(phone);
 
         personRepository.save(person);
-        return "persons";
+        return "index";
     }
 
 	@RequestMapping(value = "/home", method = RequestMethod.GET)

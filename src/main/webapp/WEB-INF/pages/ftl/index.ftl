@@ -3,13 +3,20 @@
 <html>
 <head><title>Hotels global booking</title></head>
 <body>
+<@security.authentication property="principal" var="loginData" scope="page" />
+<#if .globals.loginData?is_hash_ex && .globals.loginData.username??>
+    <p>You are currently logged in as ${.globals.loginData.username}.
+        <a href="/j_spring_security_logout">Logout</a>
+    <br>To edit your personal data please proceed to <a href="/userProfile">your profile page</a>.</p>
+<#elseif .globals.loginData?is_string && .globals.loginData == "anonymousUser">
+    <p>You are not logged in. Please proceed to <a href="/spring_security_login">Login page</a></p>
+</#if>
+
 <div id="header">
     <H2>
         index
     </H2>
 </div>
-
-<@security.authentication property="principal.username" var="name" scope="page" />
 
 <div id="content">
     <table class="datatable">
@@ -38,14 +45,6 @@
         <td colspan=5>No users retrieved from database</td>
         </#if>
     </table>
-
-    You are currently logged in as ${.globals.name}.
-    <#if model["logged_in_user"]??>
-        <p>You are currently logged in as ${requestParameters.servicesettings}.
-        To edit your personal data please proceed to <a href="/userProfile/${model["logged_in_user"].username}">user profile page</a>.</p>
-    <#else>
-        <p>You are not logged in. Please proceed to <a href="/login">Login page</a></p>
-    </#if>
 
 </div>
 </body>

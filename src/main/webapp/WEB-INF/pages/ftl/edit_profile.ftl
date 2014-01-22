@@ -1,9 +1,20 @@
+<#assign security=JspTaglibs["/WEB-INF/security.tld"] />
+
 <html>
 <head><title>Hotels global booking - User profile</title></head>
 <body>
+<@security.authentication property="principal" var="loginData" scope="page" />
+<#if .globals.loginData?is_hash_ex && .globals.loginData.username??>
+    <p>You are currently logged in as ${.globals.loginData.username}.
+        <a href="/j_spring_security_logout">Logout</a>
+    <br>To edit your personal data please proceed to <a href="/userProfile">your profile page</a>.</p>
+<#elseif .globals.loginData?is_string && .globals.loginData == "anonymousUser">
+    <p>You are not logged in. Please proceed to <a href="/spring_security_login">Login page</a></p>
+</#if>
+
 <div id="header">
     <H2>
-        Please edit your personal profile, username ${user.username}
+        Please edit your personal profile, username ${.globals.loginData.username}
     </H2>
 </div>
 
