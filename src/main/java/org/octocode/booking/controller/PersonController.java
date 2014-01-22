@@ -27,6 +27,13 @@ public class PersonController {
         return "index";
     }
 
+    @RequestMapping(value = "/search", method = RequestMethod.GET)
+    public String search(@ModelAttribute("model") ModelMap model) {
+        Person person = personRepository.findById(2);
+        model.addAttribute("userList", "model: " + person);
+        return "search";
+    }
+
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public String home(@ModelAttribute("model") ModelMap model) {
         Person person = personRepository.findById(1);

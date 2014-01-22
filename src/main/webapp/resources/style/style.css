@@ -109,6 +109,11 @@ body {
     background: #BFF08E;
 }
 
+.view-content {
+    padding: 0 0 0 270px;
+    background: #BFF08E;
+}
+
 .footer-middle {
     width: 100%;
     padding: 0 0 10px;
@@ -123,6 +128,18 @@ body {
     padding: 0;
     background: #FFE680;
 }
+.card-content {
+    padding: 0;
+    background: #ff9487;
+}
+.sort-content {
+    padding: 0;
+    background: #cad8ff;
+}
+.rights-content {
+    padding: 0;
+    background: #7ee0ff;
+}
 
 /* Left Sidebar
 -----------------------------------------------------------------------------*/
@@ -134,6 +151,13 @@ body {
 	background: #B5E3FF;
 }
 
+.view-left-sidebar {
+    float: left;
+    width: 250px;
+    margin-left: -100%;
+    position: relative;
+    background: #B5E3FF;
+}
 
 /* Right Sidebar
 -----------------------------------------------------------------------------*/
