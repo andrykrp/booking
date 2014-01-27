@@ -1,21 +1,31 @@
 package org.octocode.booking.controller;
 
+import org.apache.log4j.Logger;
 import org.octocode.booking.data.PersonRepository;
 import org.octocode.booking.model.Person;
+import org.octocode.booking.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 import java.security.Principal;
 
 @Controller
 @RequestMapping("/")
 public class PersonController {
-    @Autowired
+    private static final Logger LOGGER = Logger.getLogger(PersonController.class);
+    @Resource
     private PersonRepository personRepository;
+    @Autowired
+    private PersonService personService;
 
     @RequestMapping(method = RequestMethod.GET)
     public String index() {
@@ -63,15 +73,34 @@ public class PersonController {
         return "search";
     }
 
-	@RequestMapping(value = "/home", method = RequestMethod.GET)
-	public String home(@ModelAttribute("model") ModelMap model) {
+    @RequestMapping(value = "/home", method = RequestMethod.GET)
+    public String home(@ModelAttribute("model") ModelMap model) {
         Person person = personRepository.findById(1);
-		model.addAttribute("message", person == null ? "Hello world!" : person.toString());
-		return "layout/home";
-	}
+        model.addAttribute("message", person == null ? "Hello world!" : person.toString());
+        return "layout/home";
+    }
 
     @RequestMapping("/persons")
-    public @ResponseBody List<Person> persons() {
-        return personRepository.findAll();
+    public
+    @ResponseBody
+    List<Person> persons() {
+        return new ArrayList<>();
+    }
+
+    @RequestMapping("/save")
+    public String savePerson() {
+        //method 1
+        /*
+        Person person = personService.save(2);
+        */
+
+        //method 2
+        /*
+        Person person = personRepository.findById(2);
+        person.setCity("OREN");
+        personRepository.save(person);
+        */
+        //LOGGER.info(person);
+        return "redirect:index";
     }
 }
