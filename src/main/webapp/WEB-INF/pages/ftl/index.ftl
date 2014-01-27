@@ -26,7 +26,7 @@
         </div>
 
         <aside class="find-right-sidebar">
-            <strong>Right Sidebar:</strong> Integer velit. Vestibulum nisi nunc, accumsan ut, vehicula sit amet, porta a, mi.
+            <strong>Right Sidebar:</strong> ${model["userList"]}
         </aside>
 
     </div>
@@ -61,4 +61,3 @@
 
 </body>
 </html>
-<#--${model["userList"]}</td>-->
