@@ -36,7 +36,7 @@
         </div>
 
         <aside class="find-right-sidebar">
-            <strong>Right Sidebar:</strong> ${model["userList"]}
+            <strong>Right Sidebar</strong>
         </aside>
 
     </div>

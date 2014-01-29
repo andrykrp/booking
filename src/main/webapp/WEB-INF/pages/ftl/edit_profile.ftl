@@ -53,8 +53,8 @@
             </td>
         </tr>
         <tr>
-            <button type="submit" value="Submit" />
-            <button type="button" onclick="window.location.replace('/index')" value="Cancel" />
+            <td><button type="submit" value="Submit" /></td>
+            <td><button type="button" onclick="window.location.replace('/index')" value="Cancel" /></td>
         </tr>
         </form>
     </table>

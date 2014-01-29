@@ -15,7 +15,8 @@ public interface PersonRepository extends CrudRepository<Person, Integer> {
     @Query("SELECT person FROM Person person WHERE person.id =:id")
     public Person findById(@Param("id") int id);
 
-    Person findByUsername(String user) throws DataAccessException;
+    @Query("SELECT person FROM Person person WHERE person.username =:username")
+    public Person findByUsername(@Param("username") String user);
 
 //    @Query("select person from Person person")
 //    public List<Person> findAll();
