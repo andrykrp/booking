@@ -4,6 +4,8 @@ import org.apache.log4j.Logger;
 import org.octocode.booking.data.PersonRepository;
 import org.octocode.booking.model.Person;
 import org.octocode.booking.service.PersonService;
+import org.octocode.booking.service.parser.AgodaParser;
+import org.octocode.booking.service.parser.ExpediaParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -24,6 +26,10 @@ public class PersonController {
     private PersonRepository personRepository;
     @Autowired
     private PersonService personService;
+    @Autowired
+    private ExpediaParser parser;
+    @Autowired
+    private AgodaParser agodaParser;
 
     @RequestMapping(method = RequestMethod.GET)
     public String index() {
@@ -60,6 +66,16 @@ public class PersonController {
 
     @RequestMapping("/save")
     public String savePerson() {
+//        String url = null;
+//        try {
+//            url = parser.getHotelList();
+//        } catch (URISyntaxException e) {
+//            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+//        }
+//        parser.sendRequest(url);
+
+        agodaParser.parse("/tmp/test.csv");
+
         //method 1
         /*
         Person person = personService.save(2);
