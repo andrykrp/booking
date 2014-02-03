@@ -45,19 +45,15 @@ public class PersonController {
 
     @Transactional
     @RequestMapping(value = "/saveUser", method = RequestMethod.POST)
-    public String saveProfile(@RequestParam("firstName") String fn,
-                              @RequestParam("lastName") String ln,
-                              @RequestParam("address") String address,
-                              @RequestParam("city") String city,
-                              @RequestParam("telephone") String phone,
-                              @ModelAttribute("model") ModelMap model, Principal p) {
-        String user = p.getName();
-        Person person = personRepository.findByUsername(user);
-        person.setFirstName(fn);
-        person.setLastName(ln);
-        person.setAddress(address);
-        person.setCity(city);
-        person.setTelephone(phone);
+    public String saveProfile(@RequestBody Person person) {
+//        String user = p.getName();
+//        Person person = personRepository.findByUsername(user);
+//        person.setFirstName(fn);
+//        person.setLastName(ln);
+//        person.setAddress(address);
+//        person.setCity(city);
+//        person.setTelephone(phone);
+
 
         personRepository.save(person);
         return "index";

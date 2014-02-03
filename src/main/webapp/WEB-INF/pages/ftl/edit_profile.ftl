@@ -1,7 +1,55 @@
 <#assign security=JspTaglibs["/WEB-INF/security.tld"] />
 
 <html>
-<head><title>Hotels global booking - User profile</title></head>
+<head>
+    <script src="../../../resources/jquery/1.10/jquery.js" ></script>
+    <script>
+        $.fn.serializeObject = function () {
+            var o = {};
+            var a = this.serializeArray();
+            $.each(a, function () {
+                if (o[this.name]) {
+                    if (!o[this.name].push) {
+                        o[this.name] = [o[this.name]];
+                    }
+                    o[this.name].push(this.value || '');
+                } else {
+                    o[this.name] = this.value || '';
+                }
+            });
+            return o;
+        };
+
+        $( document ).ready(function() {
+            console.log("document loaded");
+            $( "#saveForm" ).submit(function( event ) {
+                var data = JSON.stringify($('form').serializeObject());
+                console.log(data);
+                $.ajax({
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    contentType: "application/json; charset=UTF-8",
+                    url: '/saveUser', // php script to retern json encoded string
+                    data: data,  // serialized data to send on server
+                    dataType:'json', // set recieving type - JSON in case of a question
+                    type:'POST', // set sending HTTP Request type
+                    async:false,
+                    success: function(data) { // callback method for further manipulations
+                        console.log('form send success');
+                    },
+                    error: function(data) { // if error occured
+                        console.log('form send error');
+                    }
+                });
+                //event.preventDefault();
+                return false;
+            });
+        });
+    </script>
+    <title>Hotels global booking - User profile</title>
+</head>
 <body>
 <@security.authentication property="principal" var="loginData" scope="page" />
 <#if .globals.loginData?is_hash_ex && .globals.loginData.username??>
@@ -21,7 +69,8 @@
 <div id="content">
     <table class="profiletable">
         <#assign user = model["user"]>
-        <form action="/saveUser" method="post" class="form-horizontal" role="form">
+        <form action="/saveUser" method="post" class="form-horizontal" role="form" id="saveForm">
+            <input type="hidden" id="username" name="username" value="${user.username}">
         <tr>
             <th>First name:</th>
             <td>
@@ -53,8 +102,8 @@
             </td>
         </tr>
         <tr>
-            <td><button type="submit" value="Submit" /></td>
-            <td><button type="button" onclick="window.location.replace('/index')" value="Cancel" /></td>
+            <td><input type="submit" value="Submit" /></td>
+            <td><input type="button" onclick="window.location.replace('/index')" value="Cancel" /></td>
         </tr>
         </form>
     </table>
