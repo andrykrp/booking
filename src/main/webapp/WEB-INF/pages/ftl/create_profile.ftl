@@ -1,7 +1,29 @@
 <#assign security=JspTaglibs["/WEB-INF/security.tld"] />
 
 <html>
-<head><title>Hotels global booking - User profile</title></head>
+<script type="text/javascript">
+    $( "#saveForm" ).submit(function( event ) {
+        var data = $('#saveForm').serialize(); // serialize all the data in the form
+        $.ajax({
+            url: '/saveUser', // php script to retern json encoded string
+            data: data,  // serialized data to send on server
+            dataType:'json', // set recieving type - JSON in case of a question
+            type:'POST', // set sending HTTP Request type
+            async:false,
+            success: function(data) { // callback method for further manipulations
+                console.log('form send success');
+            },
+            error: function(data) { // if error occured
+                console.log('form send error');
+            }
+        });
+        //event.preventDefault();
+        return false;
+    });
+</script>
+<head>
+    <title>Hotels global booking - User profile</title>
+</head>
 <body>
 <@security.authentication property="principal" var="loginData" scope="page" />
 <#if .globals.loginData?is_hash_ex && .globals.loginData.username??>
@@ -17,7 +39,7 @@
 
 <div id="content">
     <table class="profiletable">
-        <form action="/saveUser" method="post" class="form-horizontal" role="form">
+        <form action="/saveUser" method="post" class="form-horizontal" role="form" id="saveForm">
             <tr>
                 <th>E-Mail (username):</th>
                 <td>
@@ -39,13 +61,13 @@
             <tr>
                 <th>First name:</th>
                 <td>
-                    <input type="text" id="firstName" name="firstName">
+                    <input type="text" id="first_name" name="firstName">
                 </td>
             </tr>
         <tr>
             <th>Last name:</th>
             <td>
-                <input type="text" id="lastName" name="lastName">
+                <input type="text" id="last_name" name="lastName">
             </td>
         </tr>
         <tr>

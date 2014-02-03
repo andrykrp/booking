@@ -7,11 +7,12 @@ import org.springframework.core.style.ToStringCreator;
 
 import javax.persistence.*;
 import javax.validation.constraints.Digits;
+import java.io.Serializable;
 import java.util.*;
 
 @Entity
 @Table(name = "Person")
-public class Person {
+public class Person implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,6 +41,18 @@ public class Person {
     @NotEmpty
     @Digits(fraction = 0, integer = 10)
     private String telephone;
+
+    public Person() {
+    }
+
+    public Person(String username, String firstName, String lastName, String address, String city, String telephone) {
+        this.username = username;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.address = address;
+        this.city = city;
+        this.telephone = telephone;
+    }
 
     public Integer getId() {
         return id;
