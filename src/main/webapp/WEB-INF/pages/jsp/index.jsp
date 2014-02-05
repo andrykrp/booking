@@ -1,3 +1,5 @@
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,16 +13,24 @@
 </head>
 
 <body>
+<security.authentication property="principal" var="loginData" scope="page" />
 
 <div class="wrapper">
 
     <header class="header">
-        <strong>Header:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tortor. Praesent dictum,
-        libero ut tempus dictum, neque eros elementum mauris, quis mollis arcu velit ac diam. Etiam neque. Quisque nec
-        turpis. Aliquam arcu nulla, dictum et, lacinia a, mollis in, ante. Sed eu felis in elit tempor venenatis. Cum
-        sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Ut ultricies porttitor purus.
-        Proin non tellus at ligula fringilla tristique. Fusce vehicula quam. Curabitur vel tortor vitae pede imperdiet
-        ultrices. Sed tortor.
+        <sec:authorize var="loggedIn" access="isAuthenticated()"/>
+        <c:choose>
+            <c:when test="${loggedIn}">
+                <p><strong>You are currently logged in as <b>${user.firstName} ${user.lastName}</b>.
+                    <a href="/j_spring_security_logout"><b>Logout</b></a></strong>
+                <br>To edit your personal data please proceed to <a href="/userProfile">your profile page</a>.
+            </c:when>
+            <c:otherwise>
+                <p><strong>You are currently not logged in.
+                    If you are registered with us, please <a href="/j_spring_security_login">Login</a></strong>
+                <br>To register please proceed to <a href="/registerUser">Registration form</a>.</p>
+            </c:otherwise>
+        </c:choose>
     </header>
 
     <div class="find-middle">
@@ -41,7 +51,7 @@
         </div>
 
         <aside class="find-right-sidebar">
-            <strong>Right Sidebar:</strong> ${model["userList"]}
+            <strong>Right Sidebar. User from model: ${model["userList"]}, user from session: ${user.username}</strong>
         </aside>
 
     </div>

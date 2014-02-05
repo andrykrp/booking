@@ -8,9 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.validation.Valid;
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 import java.security.Principal;
@@ -36,9 +40,13 @@ public class PersonController {
     }
 
     @RequestMapping(value = "/userProfile", method = RequestMethod.GET)
-    public String editProfile(@ModelAttribute("model") ModelMap model, Principal p) {
+    public String editProfile(HttpServletRequest request, @ModelAttribute("model") ModelMap model, Principal p) {
         String user = p.getName();
         Person person = personRepository.findByUsername(user);
+        if (person != null)
+        {
+            request.getSession().setAttribute("user", person);
+        }
         model.addAttribute("user", person);
         return "edit_profile";
     }
@@ -48,12 +56,25 @@ public class PersonController {
     public String saveProfile(@RequestBody Person person) {
 //        String user = p.getName();
 //        Person person = personRepository.findByUsername(user);
-//        person.setFirstName(fn);
-//        person.setLastName(ln);
-//        person.setAddress(address);
-//        person.setCity(city);
-//        person.setTelephone(phone);
 
+        personRepository.save(person);
+        return "index";
+    }
+
+    @RequestMapping(value = "/registerUser", method = RequestMethod.GET)
+    public String registerProfile(Person person) {
+        return "create_profile";
+    }
+
+    @Transactional
+    @RequestMapping(value = "/registerUser", method = RequestMethod.POST)
+    public String registerProfile(@RequestParam("retypePassword") String pswd2, @RequestBody @Valid Person person,
+                                  BindingResult br, RedirectAttributes ra) {
+        String pswd = person.getPassword();
+        if(!pswd.equals(pswd2)) {
+            ra.addFlashAttribute("error", br.getFieldError().getDefaultMessage());
+            return "redirect:registerUser";
+        }
 
         personRepository.save(person);
         return "index";
