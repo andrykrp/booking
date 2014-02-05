@@ -27,7 +27,7 @@
             </c:when>
             <c:otherwise>
                 <p><strong>You are currently not logged in.
-                    If you are registered with us, please <a href="/j_spring_security_login">Login</a></strong>
+                    If you are registered with us, please <a href="/spring_security_login">Login</a></strong>
                 <br>To register please proceed to <a href="/registerUser">Registration form</a>.</p>
             </c:otherwise>
         </c:choose>

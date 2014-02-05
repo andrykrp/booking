@@ -14,7 +14,9 @@
                 console.log('form send success');
             },
             error: function(data) { // if error occured
+                console.log(data);
                 console.log('form send error');
+                $(document).html(data.responseText);
             }
         });
         //event.preventDefault();
