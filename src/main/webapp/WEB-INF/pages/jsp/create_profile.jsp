@@ -7,15 +7,13 @@
             var o = {};
             var a = this.serializeArray();
             $.each(a, function () {
-                if ( this.name != 'retypePassword' ) {
-                    if (o[this.name]) {
-                        if (!o[this.name].push) {
-                            o[this.name] = [o[this.name]];
-                        }
-                        o[this.name].push(this.value || '');
-                    } else {
-                        o[this.name] = this.value || '';
+                if (o[this.name]) {
+                    if (!o[this.name].push) {
+                        o[this.name] = [o[this.name]];
                     }
+                    o[this.name].push(this.value || '');
+                } else {
+                    o[this.name] = this.value || '';
                 }
             });
             return o;
@@ -32,7 +30,7 @@
                         'Content-Type': 'application/json'
                     },
                     contentType: "application/json; charset=UTF-8",
-                    url: '/registerUser', // php script to retern json encoded string
+                    url: '/registerUser?retypePassword=' + $('#retypePassword').val(), // php script to retern json encoded string
                     data: data,  // serialized data to send on server
                     dataType:'json', // set recieving type - JSON in case of a question
                     type:'POST', // set sending HTTP Request type

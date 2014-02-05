@@ -7,12 +7,14 @@ import org.octocode.booking.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
@@ -67,11 +69,11 @@ public class PersonController {
     }
 
     @Transactional
-    @RequestMapping(value = "/registerUser", method = RequestMethod.POST)
-    public String registerProfile(@RequestParam("retypePassword") String pswd2, @RequestBody @Valid Person person,
-                                  BindingResult br, RedirectAttributes ra) {
+    @RequestMapping(value = "/registerUser", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
+        public String registerProfile(@RequestBody @Valid Person person, @RequestParam(value = "retypePassword", required = false) String retypePassword,
+                                  BindingResult br, RedirectAttributes ra, Model model) {
         String pswd = person.getPassword();
-        if(!pswd.equals(pswd2)) {
+        if(!pswd.equals(retypePassword)) {
             ra.addFlashAttribute("error", br.getFieldError().getDefaultMessage());
             return "redirect:registerUser";
         }

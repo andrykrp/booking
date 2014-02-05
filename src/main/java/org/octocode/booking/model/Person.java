@@ -1,5 +1,6 @@
 package org.octocode.booking.model;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.beans.support.MutableSortDefinition;
 import org.springframework.beans.support.PropertyComparator;
@@ -12,7 +13,8 @@ import java.util.*;
 
 @Entity
 @Table(name = "Person")
-public class Person implements Serializable{
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class Person implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
