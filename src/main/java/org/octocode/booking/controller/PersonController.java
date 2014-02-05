@@ -5,6 +5,8 @@ import org.octocode.booking.data.PersonRepository;
 import org.octocode.booking.model.Person;
 import org.octocode.booking.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -70,16 +72,14 @@ public class PersonController {
 
     @Transactional
     @RequestMapping(value = "/registerUser", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
-        public String registerProfile(@RequestBody @Valid Person person, @RequestParam(value = "retypePassword", required = false) String retypePassword,
+    public @ResponseBody Person registerProfile(@RequestBody @Valid Person person, @RequestParam(value = "retypePassword", required = false) String retypePassword,
                                   BindingResult br, RedirectAttributes ra, Model model) {
         String pswd = person.getPassword();
         if(!pswd.equals(retypePassword)) {
             ra.addFlashAttribute("error", br.getFieldError().getDefaultMessage());
-            return "redirect:registerUser";
+            return null;
         }
-
-        personRepository.save(person);
-        return "index";
+        return personRepository.save(person);
     }
 
     @RequestMapping(value = "/search", method = RequestMethod.GET)
