@@ -58,9 +58,8 @@ public class PersonController {
 
     @Transactional
     @RequestMapping(value = "/saveUser", method = RequestMethod.POST)
-    public String saveProfile(@RequestBody Person person) {
-        personRepository.save(person);
-        return "index";
+    public @ResponseBody Person saveProfile(@RequestBody Person person) {
+        return personRepository.save(person);
     }
 
     @RequestMapping(value = "/registerUser", method = RequestMethod.GET)
