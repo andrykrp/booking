@@ -22,7 +22,7 @@
                        authorities-by-username-query=
                                "select username,'ROLE_USER' from Person where username=?"/>
 
-	<authentication-manager>
+	<authentication-manager alias="authenticationManager">
 	  <authentication-provider user-service-ref="userService" />
 		<!--user-service>
 			<user name="mike" password="123" authorities="ROLE_USER" />

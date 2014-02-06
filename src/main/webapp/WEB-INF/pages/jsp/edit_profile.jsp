@@ -37,6 +37,7 @@
                     async:false,
                     success: function(data) { // callback method for further manipulations
                         console.log('form send success');
+                        window.location = "/";
                     },
                     error: function(data) { // if error occured
                         console.log('form send error');

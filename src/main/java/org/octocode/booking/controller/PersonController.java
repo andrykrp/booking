@@ -7,6 +7,11 @@ import org.octocode.booking.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.WebAuthenticationDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -17,6 +22,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
@@ -31,6 +37,9 @@ public class PersonController {
     private PersonRepository personRepository;
     @Autowired
     private PersonService personService;
+
+    @Autowired
+    protected AuthenticationManager authenticationManager;
 
     @RequestMapping(method = RequestMethod.GET)
     public String index() {
@@ -69,14 +78,31 @@ public class PersonController {
 
     @Transactional
     @RequestMapping(value = "/registerUser", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
-    public @ResponseBody Person registerProfile(@RequestBody @Valid Person person, @RequestParam(value = "retypePassword", required = false) String retypePassword,
-                                  BindingResult br, RedirectAttributes ra, Model model) {
+    public @ResponseBody Person registerProfile(@RequestBody @Valid Person person,
+                                  @RequestParam(value = "retypePassword", required = false) String retypePassword,
+                                  BindingResult br, RedirectAttributes ra, HttpServletRequest request) {
         String pswd = person.getPassword();
+        String user = person.getUsername();
         if(!pswd.equals(retypePassword)) {
             ra.addFlashAttribute("error", br.getFieldError().getDefaultMessage());
             return null;
         }
-        return personRepository.save(person);
+        Person p = personRepository.save(person);
+        UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(user, pswd);
+
+        HttpSession session = request.getSession();
+        token.setDetails(new WebAuthenticationDetails(request));
+        try {
+            Authentication authenticatedUser = authenticationManager.authenticate(token);
+            SecurityContextHolder.getContext().setAuthentication(authenticatedUser);
+            session.setAttribute("user", p);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            //return null;
+        }
+
+        return p;
     }
 
     @RequestMapping(value = "/search", method = RequestMethod.GET)
