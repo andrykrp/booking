@@ -45,22 +45,20 @@ public class PersonController {
 
     @RequestMapping(value = "/userProfile", method = RequestMethod.GET)
     public String editProfile(HttpServletRequest request, @ModelAttribute("model") ModelMap model, Principal p) {
-        String user = p.getName();
-        Person person = personRepository.findByUsername(user);
-        if (person != null)
-        {
-            request.getSession().setAttribute("user", person);
+        if(request.getSession().getAttribute("user") == null) {
+            String user = p.getName();
+            Person person = personRepository.findByUsername(user);
+            if (person != null)
+            {
+                request.getSession().setAttribute("user", person);
+            }
         }
-        model.addAttribute("user", person);
         return "edit_profile";
     }
 
     @Transactional
     @RequestMapping(value = "/saveUser", method = RequestMethod.POST)
     public String saveProfile(@RequestBody Person person) {
-//        String user = p.getName();
-//        Person person = personRepository.findByUsername(user);
-
         personRepository.save(person);
         return "index";
     }
@@ -103,20 +101,4 @@ public class PersonController {
         return new ArrayList<>();
     }
 
-    @RequestMapping("/save")
-    public String savePerson() {
-        //method 1
-        /*
-        Person person = personService.save(2);
-        */
-
-        //method 2
-        /*
-        Person person = personRepository.findById(2);
-        person.setCity("OREN");
-        personRepository.save(person);
-        */
-        //LOGGER.info(person);
-        return "redirect:index";
-    }
 }

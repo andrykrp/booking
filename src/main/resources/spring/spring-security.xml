@@ -10,12 +10,10 @@
     <beans:bean id="customAuthenticationSuccessHandler" class="org.octocode.booking.security.CustomAuthenticationSuccessHandler"/>
 
 	<http auto-config="true" use-expressions="true">
-        <intercept-url pattern="/userProfile/**" access="ROLE_USER" />
+        <intercept-url pattern="/userProfile/**" access="hasRole('ROLE_USER')" />
+        <intercept-url pattern="/saveUser/**" access="hasRole('ROLE_USER')" />
         <form-login login-page='/spring_security_login' authentication-success-handler-ref="customAuthenticationSuccessHandler" />
-        <!--intercept-url pattern="/saveUser/**" access="ROLE_USER" /-->
-		<!--form-login login-page="/login" default-target-url="/welcome"
-			authentication-failure-url="/loginfailed" />
-		<logout logout-success-url="/logout" /-->
+		<!--logout logout-success-url="/logout" /-->
 	</http>
 
     <jdbc-user-service id="userService" data-source-ref="dataSource"
