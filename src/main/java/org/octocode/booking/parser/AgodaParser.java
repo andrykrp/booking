@@ -1,6 +1,6 @@
-package org.octocode.booking.service.parser;
+package org.octocode.booking.parser;
 
-import org.octocode.booking.service.parser.util.CSVUtil;
+import org.octocode.booking.parser.util.CSVUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
