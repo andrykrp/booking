@@ -3,6 +3,7 @@ package org.octocode.booking.controller;
 import org.apache.log4j.Logger;
 import org.octocode.booking.data.PersonRepository;
 import org.octocode.booking.model.Person;
+import org.octocode.booking.parser.WegoParser;
 import org.octocode.booking.service.PersonService;
 import org.octocode.booking.parser.AgodaParser;
 import org.octocode.booking.parser.ExpediaParser;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,6 +32,8 @@ public class PersonController {
     private ExpediaParser parser;
     @Autowired
     private AgodaParser agodaParser;
+    @Autowired
+    private WegoParser wegoParser;
 
     @RequestMapping(method = RequestMethod.GET)
     public String index() {
@@ -74,7 +78,7 @@ public class PersonController {
 //        }
 //        parser.sendRequest(url);
 
-        agodaParser.parse("/tmp/test.csv");
+//        agodaParser.parse("/tmp/test.csv");
 
         //method 1
         /*
@@ -88,6 +92,16 @@ public class PersonController {
         personRepository.save(person);
         */
         //LOGGER.info(person);
+        return "redirect:index";
+    }
+
+    @RequestMapping("/wego")
+    public String wego() {
+        try {
+            wegoParser.getHotelsList();
+        } catch (URISyntaxException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
         return "redirect:index";
     }
 }

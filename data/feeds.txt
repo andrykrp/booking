@@ -1,0 +1,51 @@
+agoda.ru - нет цен, только описание отелей и на английском
+http://affiliates.hotelscombined.com  -  чтобы получать информацию необходимо по ссылке http://affiliates.hotelscombined.com/DataFeeds ввести данные
+booking.com - предоставляется фид при наличии хотя бы 500 бронирований за последний месяц
+    https://www.ian.com - здесь данные есть (апи), но заебемся
+zanox.com - партнерка, не подет в качестве основного фида
+    http://www.wego.com - зайти не смогли, данные получать можно (но нужен api key)
+cj.com  -  апи нет, данные не вытащить
+
+
+ian.com
+    https://www.ian.com/ian/affiliatecenter/login.jsp
+    453693
+    mlgroup
+    4jvc9z085a
+
+https://www.hoteltravel.com/
+    mlgroup
+    uzixcxie
+
+http://support.travelpayouts.com/entries/28134007-Hotel-search-API      ---  hotellook
+    dimokts@gmail.com
+    qwe123
+
+
+
+
+
+wego.com http://www.wan.travel/api
+
+    http://api.wego.com/hotels/api/locations/search?q=orenburg&api_key=768fcdd93c60ec94a25f&ts_code=b11a3&user_ip=direct
+    |
+    http://api.wego.com/hotels/api/search/new?location_id=6242&check_in=2014-02-15&check_out=2014-02-20&user_ip=direct&api_key=768fcdd93c60ec94a25f&ts_code=b11a3&user_ip=direct
+    |
+    http://api.wego.com/hotels/api/search/22106348?user_ip=direct&api_key=768fcdd93c60ec94a25f&ts_code=b11a3&user_ip=direct&lang=ru
+
+    инфа об отеле
+    |
+    http://api.wego.com/hotels/api/search/show/22106348?hotel_id=747867&user_ip=direct&api_key=768fcdd93c60ec94a25f&ts_code=b11a3&user_ip=direct&lang=ru
+
+    redirect
+    |
+    http://api.wego.com/hotels/api/search/redirect/direct?hotel_id=747867&room_rate_id=147-3&api_key=768fcdd93c60ec94a25f&ts_code=b11a3&user_ip=95.78.255.49&locale=ru
+
+    не отображает на русском
+
+
+
+hoteltravel.com - хуйня
+
+https://hotelaffiliates.makemytrip.com/HotelsSOAClient/index.htm - индуская хуйня с говневой документацией в ворде, километровые xml
+

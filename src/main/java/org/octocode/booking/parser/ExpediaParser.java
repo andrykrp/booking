@@ -81,43 +81,4 @@ public class ExpediaParser {
         System.out.println("URL = " + uri.toString());
         return uri.toString();
     }
-
-    public void sendRequest(String url) {
-        DefaultHttpClient httpclient = new DefaultHttpClient();
-
-        // Create an HTTP GET request
-        HttpGet httpget = new HttpGet(url);
-
-        // Execute the request
-        httpget.getRequestLine();
-        HttpResponse response = null;
-        try {
-            response = httpclient.execute(httpget);
-        } catch (IOException e) {
-            e.printStackTrace();
-            return;
-        }
-
-        HttpEntity entity = response.getEntity();
-        // Print the response
-        System.out.println(response.getStatusLine());
-
-        if (entity != null) {
-            try {
-                InputStream inputStream = entity.getContent();
-                // Process the response
-                BufferedReader bufferedReader = new BufferedReader(
-                        new InputStreamReader(inputStream));
-                String line;
-                while ((line = bufferedReader.readLine()) != null) {
-                    System.out.println(line);
-                }
-                bufferedReader.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        // shut down the connection manager to free up system resources.
-        httpclient.getConnectionManager().shutdown();
-    }
 }
