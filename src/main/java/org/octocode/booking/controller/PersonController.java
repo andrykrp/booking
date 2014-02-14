@@ -2,11 +2,12 @@ package org.octocode.booking.controller;
 
 import org.apache.log4j.Logger;
 import org.octocode.booking.data.PersonRepository;
+import org.octocode.booking.model.Hotel;
 import org.octocode.booking.model.Person;
-import org.octocode.booking.parser.WegoParser;
-import org.octocode.booking.service.PersonService;
 import org.octocode.booking.parser.AgodaParser;
-import org.octocode.booking.parser.ExpediaParser;
+import org.octocode.booking.parser.WegoParser;
+import org.octocode.booking.parser.expedia.ExpediaParser;
+import org.octocode.booking.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -29,7 +30,7 @@ public class PersonController {
     @Autowired
     private PersonService personService;
     @Autowired
-    private ExpediaParser parser;
+    private ExpediaParser expediaParser;
     @Autowired
     private AgodaParser agodaParser;
     @Autowired
@@ -62,9 +63,7 @@ public class PersonController {
     }
 
     @RequestMapping("/persons")
-    public
-    @ResponseBody
-    List<Person> persons() {
+    public @ResponseBody List<Person> persons() {
         return new ArrayList<>();
     }
 
@@ -100,8 +99,32 @@ public class PersonController {
         try {
             wegoParser.getHotelsList();
         } catch (URISyntaxException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            e.printStackTrace();
         }
         return "redirect:index";
+    }
+
+    @RequestMapping("/expedia")
+    public String expedia() {
+        try {
+            expediaParser.getHotelList();
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
+
+        return "redirect:index";
+    }
+
+    @RequestMapping("/expediaByCity")
+    public String expediaByCity(@ModelAttribute("model") ModelMap model) {
+        List<Hotel> hotels = new ArrayList<>();
+        try {
+            hotels = expediaParser.getByCityName();
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
+        model.put("hotels", hotels);
+
+        return "layout/hotelsList";
     }
 }

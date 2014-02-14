@@ -1,12 +1,14 @@
 package org.octocode.booking.parser;
 
 import org.apache.http.client.utils.URIBuilder;
+import org.octocode.booking.model.Hotel;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
+import java.io.InputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.List;
 
 /**
  * @author Dmitriy Guskov
@@ -32,5 +34,8 @@ public class WegoParser extends AbstractParser {
         sendRequest(uri);
     }
 
-
+    @Override
+    protected List<Hotel> parseResponse(InputStream response) {
+        return null;
+    }
 }

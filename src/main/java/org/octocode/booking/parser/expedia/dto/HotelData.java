@@ -1,12 +1,19 @@
-package org.octocode.booking.model;
+package org.octocode.booking.parser.expedia.dto;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * @author Dmitriy Guskov
  */
 
-public class Hotel {
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class HotelData {
+    @JsonProperty("@order")
+    private Long order;
     private Long hotelId;
     private String name;
+    @JsonProperty("address1")
     private String address;
     private String city;
     private String postalCode;
@@ -21,13 +28,15 @@ public class Hotel {
     private String longitude;
     private String thumbNailUrl;
     private String deepLink;
+    @JsonProperty("RoomRateDetailsList")
+    private RoomRateDetailsListWrapper roomRateDetailsListWrapper;
 
-    public String getName() {
-        return name;
+    public Long getOrder() {
+        return order;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setOrder(Long order) {
+        this.order = order;
     }
 
     public Long getHotelId() {
@@ -36,6 +45,14 @@ public class Hotel {
 
     public void setHotelId(Long hotelId) {
         this.hotelId = hotelId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getAddress() {
@@ -148,5 +165,13 @@ public class Hotel {
 
     public void setDeepLink(String deepLink) {
         this.deepLink = deepLink;
+    }
+
+    public RoomRateDetailsListWrapper getRoomRateDetailsListWrapper() {
+        return roomRateDetailsListWrapper;
+    }
+
+    public void setRoomRateDetailsListWrapper(RoomRateDetailsListWrapper roomRateDetailsListWrapper) {
+        this.roomRateDetailsListWrapper = roomRateDetailsListWrapper;
     }
 }
