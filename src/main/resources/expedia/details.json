@@ -1,0 +1,759 @@
+{"HotelRoomAvailabilityResponse": {
+        "@size": "2",
+        "customerSessionId": "0ABAA875-107B-9B91-3442-33AB63B92234",
+        "hotelId": 109496,
+        "arrivalDate": "08/03/2012",
+        "departureDate": "08/04/2012",
+        "hotelName": "Days Inn Atlanta Downtown",
+        "hotelAddress": "300 Spring Street",
+        "hotelCity": "Atlanta",
+        "hotelStateProvince": "GA",
+        "hotelCountry": "US",
+        "numberOfRoomsRequested": 1,
+        "checkInInstructions": " Notifications:There are no room charges for children 18 years old and younger who occupy the same room as their parents or guardians, using existing bedding.  ",
+        "tripAdvisorRating": 3,
+        "rateKey": "89539799-452a-4e0f-ae80-12fabac6b470",
+        "HotelRoomResponse": [
+            {
+                "cancellationPolicy": "We understand that sometimes plans fall through. We do not charge a change or cancel fee. However, this property (Days Inn Atlanta Downtown) imposes the following penalty to its customers that we are required to pass on: Cancellations or changes made after 11:59 PM ((GMT-05:00) Eastern Time (US & Canada)) on Aug 2, 2012 are subject to a 1 Night Room & Tax penalty. The property makes no refunds for no shows or early checkouts.",
+                "rateCode": 8282,
+                "rateDescription": "Deluxe room with two double beds",
+                "RoomType": {
+                    "@roomCode": "8282",
+                    "@roomTypeId": "141783",
+                    "description": "Deluxe room with two double beds",
+                    "descriptionLong": "Two double beds. Balcony. Desk. Complimentary wireless Internet access. Cable/satellite TV. Clock radio. Coffee/tea maker. Hair dryer. Iron/ironing board. Air conditioning. ",
+                    "roomAmenities": {
+                        "@size": "24",
+                        "RoomAmenity": [
+                            {
+                                "@amenityId": "1492465",
+                                "amenity": "Air conditioning "
+                            },
+                            {
+                                "@amenityId": "1492452",
+                                "amenity": "Balcony "
+                            },
+                            {
+                                "@amenityId": "7816002",
+                                "amenity": "Cable television service "
+                            },
+                            {
+                                "@amenityId": "1492446",
+                                "amenity": "Climate control "
+                            },
+                            {
+                                "@amenityId": "1492453",
+                                "amenity": "Clock radio "
+                            },
+                            {
+                                "@amenityId": "1492461",
+                                "amenity": "Coffee/tea maker "
+                            },
+                            {
+                                "@amenityId": "11829687",
+                                "amenity": "Complimentary newspaper "
+                            },
+                            {
+                                "@amenityId": "1492442",
+                                "amenity": "Cribs (infant beds) available "
+                            },
+                            {
+                                "@amenityId": "1492460",
+                                "amenity": "Daily housekeeping "
+                            },
+                            {
+                                "@amenityId": "1492444",
+                                "amenity": "Desk "
+                            },
+                            {
+                                "@amenityId": "1492457",
+                                "amenity": "Extra towels/bedding  "
+                            },
+                            {
+                                "@amenityId": "11829688",
+                                "amenity": "Fax machine "
+                            },
+                            {
+                                "@amenityId": "1492454",
+                                "amenity": "Hair dryer "
+                            },
+                            {
+                                "@amenityId": "11829689",
+                                "amenity": "In-room safe "
+                            },
+                            {
+                                "@amenityId": "3884473",
+                                "amenity": "Internet access (complimentary) "
+                            },
+                            {
+                                "@amenityId": "1492455",
+                                "amenity": "Iron/ironing board "
+                            },
+                            {
+                                "@amenityId": "1492464",
+                                "amenity": "Non-smoking only "
+                            },
+                            {
+                                "@amenityId": "1492449",
+                                "amenity": "Rollaway beds available "
+                            },
+                            {
+                                "@amenityId": "1492443",
+                                "amenity": "Soundproofed rooms "
+                            },
+                            {
+                                "@amenityId": "11829690",
+                                "amenity": "Television Internet access (complimentary) "
+                            },
+                            {
+                                "@amenityId": "1492451",
+                                "amenity": "Voice mail "
+                            },
+                            {
+                                "@amenityId": "1492462",
+                                "amenity": "Wake-up calls "
+                            },
+                            {
+                                "@amenityId": "1492450",
+                                "amenity": "Window opens "
+                            },
+                            {
+                                "@amenityId": "3884474",
+                                "amenity": "Wireless Internet access "
+                            }
+                        ]
+                    }
+                },
+                "supplierType": "E",
+                "taxRate": 16.33,
+                "rateChange": false,
+                "nonRefundable": false,
+                "guaranteeRequired": false,
+                "depositRequired": true,
+                "immediateChargeRequired": true,
+                "currentAllotment": 10,
+                "propertyId": 26565,
+                "BedTypes": {
+                    "@size": "1",
+                    "BedType": {
+                        "@id": "21",
+                        "description": "2 Double Beds"
+                    }
+                },
+                "CancelPolicyInfoList": {
+                    "CancelPolicyInfo": [
+                        {
+                            "versionId": 205767629,
+                            "cancelTime": "23:59:00",
+                            "startWindowHours": 0,
+                            "nightCount": 1,
+                            "currencyCode": "USD",
+                            "timeZoneDescription": "(GMT-05:00) Eastern Time (US & Canada)"
+                        },
+                        {
+                            "versionId": 205767628,
+                            "cancelTime": "23:59:00",
+                            "startWindowHours": 24,
+                            "nightCount": 0,
+                            "currencyCode": "USD",
+                            "timeZoneDescription": "(GMT-05:00) Eastern Time (US & Canada)"
+                        }
+                    ]
+                },
+                "smokingPreferences": "S,NS",
+                "rateOccupancyPerRoom": 4,
+                "quotedOccupancy": 2,
+                "minGuestAge": 0,
+                "RateInfos": {
+                    "@size": "1",
+                    "RateInfo": {
+                        "@rateChange": "false",
+                        "@promo": "false",
+                        "@priceBreakdown": "true",
+                        "RoomGroup": {
+                            "Room": {
+                                "numberOfAdults": 2,
+                                "numberOfChildren": 0
+                            }
+                        },
+                        "ChargeableRateInfo": {
+                            "@commissionableUsdTotal": "93.33",
+                            "@total": "109.66",
+                            "@surchargeTotal": "16.33",
+                            "@nightlyRateTotal": "93.33",
+                            "@averageBaseRate": "93.33",
+                            "@averageRate": "93.33",
+                            "@maxNightlyRate": "93.33",
+                            "@currencyCode": "USD",
+                            "NightlyRatesPerRoom": {
+                                "@size": "1",
+                                "NightlyRate": {
+                                    "@promo": "false",
+                                    "@rate": "93.33",
+                                    "@baseRate": "93.33"
+                                }
+                            },
+                            "Surcharges": {
+                                "@size": "1",
+                                "Surcharge": {
+                                    "@amount": "16.33",
+                                    "@type": "TaxAndServiceFee"
+                                }
+                            }
+                        },
+                        "ConvertedRateInfo": {
+                            "@total": "109.66",
+                            "@surchargeTotal": "16.33",
+                            "@nightlyRateTotal": "93.33",
+                            "@averageBaseRate": "93.33",
+                            "@averageRate": "93.33",
+                            "@maxNightlyRate": "93.33",
+                            "@currencyCode": "",
+                            "NightlyRatesPerRoom": {
+                                "@size": "1",
+                                "NightlyRate": {
+                                    "@promo": "false",
+                                    "@rate": "93.33",
+                                    "@baseRate": "93.33"
+                                }
+                            },
+                            "Surcharges": {
+                                "@size": "1",
+                                "Surcharge": {
+                                    "@amount": "16.33",
+                                    "@type": "TaxAndServiceFee"
+                                }
+                            }
+                        }
+                    }
+                },
+                "ValueAdds": {
+                    "@size": "1",
+                    "ValueAdd": {
+                        "@id": "2",
+                        "description": "Continental Breakfast"
+                    }
+                },
+                "deepLink": "http://travel.ian.com/hotels/priceCheck.jsp?cid=55505&locale=en_US&currencyCode=USD&numberOfRooms=1&room-0-adult-total=2&room-0-child-total=0&rateChange=false&rateDescription=Deluxe+room+with+two+double+beds&rateCode=8282&roomTypeCodeDescription=Deluxe+room+with+two+double+beds&roomTypeCode=8282&cityLink=Atlanta&stateProvinceLink=GA&countryLink=US&resType=hotel&propertyID=26565&hotelID=109496&supplierType=E&propertyType=H&requestKey=89539799-452a-4e0f-ae80-12fabac6b470&rateKey=89539799-452a-4e0f-ae80-12fabac6b470&arrivalMonth=7&arrivalDay=3&arrivalYear=2012&departureMonth=7&departureDay=4&departureYear=2012&nativeNightlyRates=93.33&nativeCurrencyCode=USD&nativeRoomRate=109.66&displayNightlyRates=93.33&displayRoomRate=109.66&chargeableRoomRateTotal=109.66&chargeableRoomRateTaxes=16.33&guarantee=C&cancellationPolicy=We+understand+that+sometimes+plans+fall+through.+We+do+not+charge+a+change+or+cancel+fee.+However%2C+this+property+%28Days+Inn+Atlanta+Downtown%29+imposes+the+following+penalty+to+its+customers+that+we+are+required+to+pass+on%3A+Cancellations+or+changes+made+after+11%3A59+PM+%28%28GMT-05%3A00%29+Eastern+Time+%28US+%26+Canada%29%29+on+Aug+2%2C+2012+are+subject+to+a+1+Night+Room+%26+Tax+penalty.+The+property+makes+no+refunds+for+no+shows+or+early+checkouts.&directConnect=false&rateFrequency=B&rateIsBase=true"
+            },
+            {
+                "cancellationPolicy": "We understand that sometimes plans fall through. We do not charge a change or cancel fee. However, this property (Days Inn Atlanta Downtown) imposes the following penalty to its customers that we are required to pass on: Cancellations or changes made after 11:59 PM ((GMT-05:00) Eastern Time (US & Canada)) on Aug 2, 2012 are subject to a 1 Night Room & Tax penalty. The property makes no refunds for no shows or early checkouts.",
+                "rateCode": 414203,
+                "rateDescription": "Deluxe room with queen bed",
+                "RoomType": {
+                    "@roomCode": "177163",
+                    "@roomTypeId": "317153",
+                    "description": "Deluxe room with queen bed",
+                    "descriptionLong": "One double bed. Balcony. Desk. Complimentary wireless Internet access. Cable/satellite TV. Clock radio. Coffee/tea maker. Hair dryer. Iron/ironing board. Air conditioning. ",
+                    "roomAmenities": {
+                        "@size": "24",
+                        "RoomAmenity": [
+                            {
+                                "@amenityId": "4796176",
+                                "amenity": "Air conditioning "
+                            },
+                            {
+                                "@amenityId": "4796187",
+                                "amenity": "Balcony "
+                            },
+                            {
+                                "@amenityId": "7901897",
+                                "amenity": "Cable television service "
+                            },
+                            {
+                                "@amenityId": "4796191",
+                                "amenity": "Climate control "
+                            },
+                            {
+                                "@amenityId": "4796188",
+                                "amenity": "Clock radio "
+                            },
+                            {
+                                "@amenityId": "4796182",
+                                "amenity": "Coffee/tea maker "
+                            },
+                            {
+                                "@amenityId": "11829691",
+                                "amenity": "Complimentary newspaper "
+                            },
+                            {
+                                "@amenityId": "4796196",
+                                "amenity": "Cribs (infant beds) available "
+                            },
+                            {
+                                "@amenityId": "4796183",
+                                "amenity": "Daily housekeeping "
+                            },
+                            {
+                                "@amenityId": "4796189",
+                                "amenity": "Desk "
+                            },
+                            {
+                                "@amenityId": "4796273",
+                                "amenity": "Extra towels/bedding  "
+                            },
+                            {
+                                "@amenityId": "11829692",
+                                "amenity": "Fax machine "
+                            },
+                            {
+                                "@amenityId": "4796274",
+                                "amenity": "Hair dryer "
+                            },
+                            {
+                                "@amenityId": "11829693",
+                                "amenity": "In-room safe "
+                            },
+                            {
+                                "@amenityId": "4796653",
+                                "amenity": "Internet access (complimentary) "
+                            },
+                            {
+                                "@amenityId": "4796186",
+                                "amenity": "Iron/ironing board "
+                            },
+                            {
+                                "@amenityId": "4796177",
+                                "amenity": "Non-smoking only "
+                            },
+                            {
+                                "@amenityId": "4796195",
+                                "amenity": "Rollaway beds available "
+                            },
+                            {
+                                "@amenityId": "4796197",
+                                "amenity": "Soundproofed rooms "
+                            },
+                            {
+                                "@amenityId": "11829694",
+                                "amenity": "Television Internet access (complimentary) "
+                            },
+                            {
+                                "@amenityId": "4796193",
+                                "amenity": "Voice mail "
+                            },
+                            {
+                                "@amenityId": "4796268",
+                                "amenity": "Wake-up calls "
+                            },
+                            {
+                                "@amenityId": "4796194",
+                                "amenity": "Window opens "
+                            },
+                            {
+                                "@amenityId": "4796652",
+                                "amenity": "Wireless Internet access "
+                            }
+                        ]
+                    }
+                },
+                "supplierType": "E",
+                "taxRate": 16.33,
+                "rateChange": false,
+                "nonRefundable": false,
+                "guaranteeRequired": false,
+                "depositRequired": true,
+                "immediateChargeRequired": true,
+                "currentAllotment": 10,
+                "propertyId": 26565,
+                "BedTypes": {
+                    "@size": "1",
+                    "BedType": {
+                        "@id": "15",
+                        "description": "Queen Bed"
+                    }
+                },
+                "CancelPolicyInfoList": {
+                    "CancelPolicyInfo": [
+                        {
+                            "versionId": 205767629,
+                            "cancelTime": "23:59:00",
+                            "startWindowHours": 0,
+                            "nightCount": 1,
+                            "currencyCode": "USD",
+                            "timeZoneDescription": "(GMT-05:00) Eastern Time (US & Canada)"
+                        },
+                        {
+                            "versionId": 205767628,
+                            "cancelTime": "23:59:00",
+                            "startWindowHours": 24,
+                            "nightCount": 0,
+                            "currencyCode": "USD",
+                            "timeZoneDescription": "(GMT-05:00) Eastern Time (US & Canada)"
+                        }
+                    ]
+                },
+                "smokingPreferences": "NS",
+                "rateOccupancyPerRoom": 2,
+                "quotedOccupancy": 2,
+                "minGuestAge": 0,
+                "RateInfos": {
+                    "@size": "1",
+                    "RateInfo": {
+                        "@rateChange": "false",
+                        "@promo": "false",
+                        "@priceBreakdown": "true",
+                        "RoomGroup": {
+                            "Room": {
+                                "numberOfAdults": 2,
+                                "numberOfChildren": 0
+                            }
+                        },
+                        "ChargeableRateInfo": {
+                            "@commissionableUsdTotal": "93.33",
+                            "@total": "109.66",
+                            "@surchargeTotal": "16.33",
+                            "@nightlyRateTotal": "93.33",
+                            "@averageBaseRate": "93.33",
+                            "@averageRate": "93.33",
+                            "@maxNightlyRate": "93.33",
+                            "@currencyCode": "USD",
+                            "NightlyRatesPerRoom": {
+                                "@size": "1",
+                                "NightlyRate": {
+                                    "@promo": "false",
+                                    "@rate": "93.33",
+                                    "@baseRate": "93.33"
+                                }
+                            },
+                            "Surcharges": {
+                                "@size": "1",
+                                "Surcharge": {
+                                    "@amount": "16.33",
+                                    "@type": "TaxAndServiceFee"
+                                }
+                            }
+                        },
+                        "ConvertedRateInfo": {
+                            "@total": "109.66",
+                            "@surchargeTotal": "16.33",
+                            "@nightlyRateTotal": "93.33",
+                            "@averageBaseRate": "93.33",
+                            "@averageRate": "93.33",
+                            "@maxNightlyRate": "93.33",
+                            "@currencyCode": "",
+                            "NightlyRatesPerRoom": {
+                                "@size": "1",
+                                "NightlyRate": {
+                                    "@promo": "false",
+                                    "@rate": "93.33",
+                                    "@baseRate": "93.33"
+                                }
+                            },
+                            "Surcharges": {
+                                "@size": "1",
+                                "Surcharge": {
+                                    "@amount": "16.33",
+                                    "@type": "TaxAndServiceFee"
+                                }
+                            }
+                        }
+                    }
+                },
+                "ValueAdds": {
+                    "@size": "1",
+                    "ValueAdd": {
+                        "@id": "2",
+                        "description": "Continental Breakfast"
+                    }
+                },
+                "deepLink": "http://travel.ian.com/hotels/priceCheck.jsp?cid=55505&locale=en_US&currencyCode=USD&numberOfRooms=1&room-0-adult-total=2&room-0-child-total=0&rateChange=false&rateDescription=Deluxe+room+with+queen+bed&rateCode=414203&roomTypeCodeDescription=Deluxe+room+with+queen+bed&roomTypeCode=177163&cityLink=Atlanta&stateProvinceLink=GA&countryLink=US&resType=hotel&propertyID=26565&hotelID=109496&supplierType=E&propertyType=H&requestKey=89539799-452a-4e0f-ae80-12fabac6b470&rateKey=89539799-452a-4e0f-ae80-12fabac6b470&arrivalMonth=7&arrivalDay=3&arrivalYear=2012&departureMonth=7&departureDay=4&departureYear=2012&nativeNightlyRates=93.33&nativeCurrencyCode=USD&nativeRoomRate=109.66&displayNightlyRates=93.33&displayRoomRate=109.66&chargeableRoomRateTotal=109.66&chargeableRoomRateTaxes=16.33&guarantee=C&cancellationPolicy=We+understand+that+sometimes+plans+fall+through.+We+do+not+charge+a+change+or+cancel+fee.+However%2C+this+property+%28Days+Inn+Atlanta+Downtown%29+imposes+the+following+penalty+to+its+customers+that+we+are+required+to+pass+on%3A+Cancellations+or+changes+made+after+11%3A59+PM+%28%28GMT-05%3A00%29+Eastern+Time+%28US+%26+Canada%29%29+on+Aug+2%2C+2012+are+subject+to+a+1+Night+Room+%26+Tax+penalty.+The+property+makes+no+refunds+for+no+shows+or+early+checkouts.&directConnect=false&rateFrequency=B&rateIsBase=true"
+            }
+        ],
+        "HotelDetails": {
+            "numberOfRooms": 263,
+            "numberOfFloors": 10,
+            "checkInTime": "3:00 PM",
+            "checkOutTime": "11:00 AM",
+            "propertyInformation": "Pets not allowed   Check-in time starts at 3 PM  Check-out time is 11 AM  ",
+            "areaInformation": "Distances are calculated in a straight line from the property's location to the point of interest or attraction, and may not reflect actual travel distance. <br /><br /> Distances are displayed to the nearest 0.1 mile and kilometre. <p>The Children's Museum of Atlanta - 0.3 km / 0.2 mi <br />World of Coca Cola - 0.3 km / 0.2 mi <br />Museum of Design Atlanta - 0.3 km / 0.2 mi <br />Centennial Olympic Park - 0.4 km / 0.3 mi <br />Georgia Aquarium - 0.5 km / 0.3 mi <br />Tabernacle - 0.5 km / 0.3 mi <br />Rialto Center for the Performing Arts - 0.7 km / 0.4 mi <br />Atlanta Civic Center - 0.7 km / 0.4 mi <br />CNN Center - 0.8 km / 0.5 mi <br />Georgia World Congress Center - 0.8 km / 0.5 mi <br />Philips Arena - 0.9 km / 0.6 mi <br />APEX Museum - 1 km / 0.6 mi <br />Atlanta Municipal Auditorium - 1.1 km / 0.7 mi <br />Underground Atlanta - 1.1 km / 0.7 mi <br />Georgia State University - 1.1 km / 0.7 mi <br /></p><p>The preferred airport for Days Inn Atlanta Downtown is Atlanta, GA (ATL-Hartsfield-Jackson Atlanta Intl.) - 14.5 km / 9 mi. </p>",
+            "propertyDescription": "<p><b>Location. </b> <br />Located in central Atlanta, Days Inn Atlanta Downtown is a business-friendly hotel within walking distance of The Children's Museum of Atlanta, Centennial Olympic Park, and World of Coca Cola. Additional points of interest include Georgia World Congress Center and Georgia Aquarium. </p><p><b>Hotel Features. </b><br />Recreational amenities include an outdoor pool and a fitness facility. This 2.0-star property offers a meeting/conference room and business services. Wireless Internet access is available in public areas. This Atlanta property has event space consisting of banquet facilities and conference/meeting rooms. The hotel serves a complimentary continental breakfast. The property offers an area shuttle (surcharge). Guest parking is limited, and available on a limited first-come, first-served basis (surcharge). Additional property amenities include gift shops/newsstands and laundry facilities. </p><p><b>Guestrooms. </b> <br /> 263  air-conditioned guestrooms at Days Inn Atlanta Downtown feature coffee/tea makers and safes. All accommodations have balconies. Wireless Internet access is available. Guestrooms offer desks, fax machines, and complimentary newspapers. Televisions have cable channels and complimentary TV Internet access. Rooms also include windows that open and hair dryers. Guests may request extra towels/bedding and wake-up calls. Housekeeping is available daily. Guestrooms are all non-smoking. </p> <br /><br /> <p><strong>Notifications:</strong><br /></p><p><ul><li>There are no room charges for children 18 years old and younger who occupy the same room as their parents or guardians, using existing bedding. </li> </ul></p><p></p><p></p>",
+            "hotelPolicy": "You must present a photo ID when checking in. Your credit card is charged at the time you book. Bed type and smoking preferences are not guaranteed.Your reservation is prepaid and is guaranteed for late arrival. The total charge includes all room charges and taxes, as well as fees for access and booking. Any incidental charges such as parking, phone calls, and room service will be handled directly between you and the property.",
+            "roomInformation": "<br /><br /> <p><strong>Notifications:</strong><br /></p><p><ul><li>There are no room charges for children 18 years old and younger who occupy the same room as their parents or guardians, using existing bedding. </li> </ul></p><p></p><p></p>",
+            "drivingDirections": "The preferred airport for Days Inn Atlanta Downtown is Atlanta, GA (ATL-Hartsfield-Jackson Atlanta Intl.) - 14.5 km / 9 mi. <p>Distances are calculated in a straight line from the property's location to the point of interest or airport and may not reflect actual travel distance. <br /><br /> Distances are displayed to the nearest 0.1 mile and kilometre. </p>",
+            "checkInInstructions": "Extra-person charges may apply and vary depending on hotel policy. Government-issued photo identification and a credit card or cash deposit are required at check-in for incidental charges. Special requests are subject to availability upon check-in and may incur additional charges. Special requests cannot be guaranteed. "
+        },
+        "PropertyAmenities": {
+            "@size": "37",
+            "PropertyAmenity": [
+                {
+                    "amenityId": 2635451,
+                    "amenity": "24-hour front desk "
+                },
+                {
+                    "amenityId": 3842716,
+                    "amenity": "Accessible bathroom "
+                },
+                {
+                    "amenityId": 3842715,
+                    "amenity": "Accessible path of travel "
+                },
+                {
+                    "amenityId": 2635444,
+                    "amenity": "Air-conditioned public areas  "
+                },
+                {
+                    "amenityId": 7125407,
+                    "amenity": "Airport transportation "
+                },
+                {
+                    "amenityId": 7125408,
+                    "amenity": "Area shuttle (surcharge) "
+                },
+                {
+                    "amenityId": 1346527,
+                    "amenity": "Banquet facilities                    "
+                },
+                {
+                    "amenityId": 777924,
+                    "amenity": "Business services                    "
+                },
+                {
+                    "amenityId": 2635447,
+                    "amenity": "Complimentary breakfast "
+                },
+                {
+                    "amenityId": 2635450,
+                    "amenity": "Complimentary newspapers in lobby  "
+                },
+                {
+                    "amenityId": 2635443,
+                    "amenity": "Computer rental "
+                },
+                {
+                    "amenityId": 2635440,
+                    "amenity": "Conference room(s) "
+                },
+                {
+                    "amenityId": 3901601,
+                    "amenity": "Dry cleaning/laundry service "
+                },
+                {
+                    "amenityId": 778057,
+                    "amenity": "Elevator/Lift                    "
+                },
+                {
+                    "amenityId": 2635441,
+                    "amenity": "Event catering "
+                },
+                {
+                    "amenityId": 7125406,
+                    "amenity": "Express check-in "
+                },
+                {
+                    "amenityId": 2635445,
+                    "amenity": "Fax machine "
+                },
+                {
+                    "amenityId": 4559056,
+                    "amenity": "Fitness facilities "
+                },
+                {
+                    "amenityId": 2635437,
+                    "amenity": "Gift shops or newsstand "
+                },
+                {
+                    "amenityId": 3842718,
+                    "amenity": "Handicapped parking "
+                },
+                {
+                    "amenityId": 3842719,
+                    "amenity": "In-room accessibility "
+                },
+                {
+                    "amenityId": 2635453,
+                    "amenity": "Internet access - wireless   "
+                },
+                {
+                    "amenityId": 2635454,
+                    "amenity": "Internet access in public areas - complimentary  "
+                },
+                {
+                    "amenityId": 1151322,
+                    "amenity": "Laundry facilities                    "
+                },
+                {
+                    "amenityId": 2635439,
+                    "amenity": "Number of floors: 10"
+                },
+                {
+                    "amenityId": 2635438,
+                    "amenity": "Number of rooms: 263 "
+                },
+                {
+                    "amenityId": 7125409,
+                    "amenity": "One meeting/conference room "
+                },
+                {
+                    "amenityId": 983741,
+                    "amenity": "Parking (surcharge)                    "
+                },
+                {
+                    "amenityId": 7125410,
+                    "amenity": "Parking limited (surcharge) "
+                },
+                {
+                    "amenityId": 2635442,
+                    "amenity": "Photocopy machines "
+                },
+                {
+                    "amenityId": 3842717,
+                    "amenity": "Roll-in shower "
+                },
+                {
+                    "amenityId": 2635449,
+                    "amenity": "Safe-deposit box - front desk "
+                },
+                {
+                    "amenityId": 2635452,
+                    "amenity": "Security guard "
+                },
+                {
+                    "amenityId": 6559010,
+                    "amenity": "Self parking (surcharge) "
+                },
+                {
+                    "amenityId": 1052880,
+                    "amenity": "Swimming pool - outdoor                    "
+                },
+                {
+                    "amenityId": 2635455,
+                    "amenity": "Swimming pool - outdoor seasonal "
+                },
+                {
+                    "amenityId": 2635446,
+                    "amenity": "Tour assistance "
+                }
+            ]
+        },
+        "HotelImages": {
+            "@size": "9",
+            "HotelImage": [
+                {
+                    "hotelImageId": 3947427,
+                    "name": "",
+                    "category": 1,
+                    "type": 0,
+                    "caption": "Exterior",
+                    "url": "http://images.travelnow.com/hotels/1000000/30000/26600/26565/26565_34_b.jpg",
+                    "thumbnailUrl": "http://images.travelnow.com/hotels/1000000/30000/26600/26565/26565_34_t.jpg",
+                    "supplierId": 13,
+                    "width": 350,
+                    "height": 350,
+                    "byteSize": 0
+                },
+                {
+                    "hotelImageId": 3947432,
+                    "name": "",
+                    "category": 0,
+                    "type": 0,
+                    "caption": "Sport Facility",
+                    "url": "http://images.travelnow.com/hotels/1000000/30000/26600/26565/26565_39_b.jpg",
+                    "thumbnailUrl": "http://images.travelnow.com/hotels/1000000/30000/26600/26565/26565_39_t.jpg",
+                    "supplierId": 13,
+                    "width": 350,
+                    "height": 350,
+                    "byteSize": 0
+                },
+                {
+                    "hotelImageId": 3947434,
+                    "name": "",
+                    "category": 0,
+                    "type": 0,
+                    "caption": "Sport Facility",
+                    "url": "http://images.travelnow.com/hotels/1000000/30000/26600/26565/26565_41_b.jpg",
+                    "thumbnailUrl": "http://images.travelnow.com/hotels/1000000/30000/26600/26565/26565_41_t.jpg",
+                    "supplierId": 13,
+                    "width": 350,
+                    "height": 350,
+                    "byteSize": 0
+                },
+                {
+                    "hotelImageId": 3947428,
+                    "name": "",
+                    "category": 1,
+                    "type": 0,
+                    "caption": "Exterior",
+                    "url": "http://images.travelnow.com/hotels/1000000/30000/26600/26565/26565_35_b.jpg",
+                    "thumbnailUrl": "http://images.travelnow.com/hotels/1000000/30000/26600/26565/26565_35_t.jpg",
+                    "supplierId": 13,
+                    "width": 350,
+                    "height": 350,
+                    "byteSize": 0
+                },
+                {
+                    "hotelImageId": 3947429,
+                    "name": "",
+                    "category": 3,
+                    "type": 0,
+                    "caption": "Guest Room",
+                    "url": "http://images.travelnow.com/hotels/1000000/30000/26600/26565/26565_36_b.jpg",
+                    "thumbnailUrl": "http://images.travelnow.com/hotels/1000000/30000/26600/26565/26565_36_t.jpg",
+                    "supplierId": 13,
+                    "width": 350,
+                    "height": 350,
+                    "byteSize": 0
+                },
+                {
+                    "hotelImageId": 3947430,
+                    "name": "",
+                    "category": 3,
+                    "type": 0,
+                    "caption": "Guest Room",
+                    "url": "http://images.travelnow.com/hotels/1000000/30000/26600/26565/26565_37_b.jpg",
+                    "thumbnailUrl": "http://images.travelnow.com/hotels/1000000/30000/26600/26565/26565_37_t.jpg",
+                    "supplierId": 13,
+                    "width": 350,
+                    "height": 350,
+                    "byteSize": 0
+                },
+                {
+                    "hotelImageId": 3947426,
+                    "name": "",
+                    "category": 3,
+                    "type": 0,
+                    "caption": "Guest Room",
+                    "url": "http://images.travelnow.com/hotels/1000000/30000/26600/26565/26565_33_b.jpg",
+                    "thumbnailUrl": "http://images.travelnow.com/hotels/1000000/30000/26600/26565/26565_33_t.jpg",
+                    "supplierId": 13,
+                    "width": 350,
+                    "height": 350,
+                    "byteSize": 0
+                },
+                {
+                    "hotelImageId": 3947433,
+                    "name": "",
+                    "category": 10,
+                    "type": 0,
+                    "caption": "Restaurant",
+                    "url": "http://images.travelnow.com/hotels/1000000/30000/26600/26565/26565_40_b.jpg",
+                    "thumbnailUrl": "http://images.travelnow.com/hotels/1000000/30000/26600/26565/26565_40_t.jpg",
+                    "supplierId": 13,
+                    "width": 350,
+                    "height": 350,
+                    "byteSize": 0
+                },
+                {
+                    "hotelImageId": 3947431,
+                    "name": "",
+                    "category": 46,
+                    "type": 0,
+                    "caption": "Meeting Facility",
+                    "url": "http://images.travelnow.com/hotels/1000000/30000/26600/26565/26565_38_b.jpg",
+                    "thumbnailUrl": "http://images.travelnow.com/hotels/1000000/30000/26600/26565/26565_38_t.jpg",
+                    "supplierId": 13,
+                    "width": 350,
+                    "height": 350,
+                    "byteSize": 0
+                }
+            ]
+        }
+    }
+}
+
+
+Example REST Hotel Room Availability Request with All Options
+Options=HOTEL_DETAILS,ROOM_TYPES,ROOM_AMENITIES,PROPERTY_AMENITIES,HOTEL_IMAGES
+
+http://api.ean.com/ean-services/rs/hotel/v3/avail?minorRev=[current minorRev #]&cid=453693&apiKey=qzbeeznbkw5tjdwffd9xf3kj&customerIpAddress=13.45.2.6&customerSessionId=0ABAAA76-F84C-5A91-4422-0C7E0A693B19&locale=en_US&currencyCode=USD&hotelId=206800&arrivalDate=08/03/2012&departureDate=08/04/2012&includeDetails=true&room1=2&options=HOTEL_DETAILS,ROOM_TYPES,ROOM_AMENITIES,PROPERTY_AMENITIES,HOTEL_IMAGES
