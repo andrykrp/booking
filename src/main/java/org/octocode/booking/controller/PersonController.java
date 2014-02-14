@@ -116,14 +116,14 @@ public class PersonController {
     }
 
     @RequestMapping("/expediaByCity")
-    public String expediaByCity(@ModelAttribute("model") ModelMap model) {
+    public String expediaByCity(ModelMap model) {
         List<Hotel> hotels = new ArrayList<>();
         try {
             hotels = expediaParser.getByCityName();
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }
-        model.put("hotels", hotels);
+        model.addAttribute("hotels", hotels);
 
         return "layout/hotelsList";
     }

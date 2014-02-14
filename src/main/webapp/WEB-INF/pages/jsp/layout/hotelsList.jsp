@@ -6,7 +6,7 @@
 </head>
 <body>
     <c:forEach var="hotel" items="${hotels}">
-        <p>${hotel.name}</p>
+        <p>Name: <b>${hotel.name}</b> - Short description: <c:out value="${hotel.shortDescription}" escapeXml="false"/> </p>
     </c:forEach>
 </body>
 </html>
