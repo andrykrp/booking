@@ -2,6 +2,7 @@ package org.octocode.booking.controller;
 
 import org.apache.log4j.Logger;
 import org.octocode.booking.data.PersonRepository;
+import org.octocode.booking.model.JsonResponse;
 import org.octocode.booking.model.Person;
 import org.octocode.booking.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,7 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.security.Principal;
 
@@ -78,15 +80,14 @@ public class PersonController {
 
     @Transactional
     @RequestMapping(value = "/registerUser", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
-    public @ResponseBody Person registerProfile(@RequestBody @Valid Person person,
-                                  @RequestParam(value = "retypePassword", required = false) String retypePassword,
-                                  BindingResult br, RedirectAttributes ra, HttpServletRequest request) {
-        String pswd = person.getPassword();
-        String user = person.getUsername();
-        if(!pswd.equals(retypePassword)) {
-            ra.addFlashAttribute("error", br.getFieldError().getDefaultMessage());
-            return null;
+    public @ResponseBody
+    JsonResponse registerProfile(@Valid @RequestBody Person person, BindingResult br,
+                                  HttpServletRequest request) {
+        if(br.hasErrors()) {
+            return new JsonResponse("FAILURE", br.getAllErrors());
         }
+        String user = person.getUsername();
+        String pswd = person.getPassword();
         Person p = personRepository.save(person);
         UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(user, pswd);
 
@@ -102,7 +103,7 @@ public class PersonController {
             //return null;
         }
 
-        return p;
+        return new JsonResponse("SUCCESS", p);
     }
 
     @RequestMapping(value = "/search", method = RequestMethod.GET)
