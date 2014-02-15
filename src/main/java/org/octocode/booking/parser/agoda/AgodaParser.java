@@ -1,4 +1,4 @@
-package org.octocode.booking.parser;
+package org.octocode.booking.parser.agoda;
 
 import org.octocode.booking.parser.util.CSVUtil;
 import org.springframework.beans.factory.annotation.Autowired;

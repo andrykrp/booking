@@ -52,5 +52,8 @@
         -->
         <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
         <jpa:repositories base-package="org.octocode.booking.data"/>
+
+        <bean id="objectMapper" class="com.fasterxml.jackson.databind.ObjectMapper">
+        </bean>
     </beans>
 </beans>

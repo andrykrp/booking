@@ -4,9 +4,9 @@ import org.apache.log4j.Logger;
 import org.octocode.booking.data.PersonRepository;
 import org.octocode.booking.model.Hotel;
 import org.octocode.booking.model.Person;
-import org.octocode.booking.parser.AgodaParser;
-import org.octocode.booking.parser.WegoParser;
+import org.octocode.booking.parser.agoda.AgodaParser;
 import org.octocode.booking.parser.expedia.ExpediaParser;
+import org.octocode.booking.parser.wego.WegoParser;
 import org.octocode.booking.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -119,9 +119,9 @@ public class PersonController {
     public String expediaByCity(ModelMap model) {
         List<Hotel> hotels = new ArrayList<>();
         try {
-            hotels = expediaParser.getByCityName();
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
+           hotels = expediaParser.getByCityName();
+        } catch (Exception e) {
+            LOGGER.error("error", e);
         }
         model.addAttribute("hotels", hotels);
 

@@ -1,7 +1,8 @@
-package org.octocode.booking.parser;
+package org.octocode.booking.parser.wego;
 
 import org.apache.http.client.utils.URIBuilder;
 import org.octocode.booking.model.Hotel;
+import org.octocode.booking.parser.RestParser;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -15,7 +16,7 @@ import java.util.List;
  */
 
 @Component
-public class WegoParser extends AbstractParser {
+public class WegoParser extends RestParser {
     @Value("${wego.url}")
     private String url;
     @Value("${wego.apiKey}")
@@ -31,11 +32,10 @@ public class WegoParser extends AbstractParser {
                 .addParameter("ts_code", tsCode)
                 .addParameter("user_ip", "direct")
                 .build();
-        sendRequest(uri);
     }
 
     @Override
-    protected List<Hotel> parseResponse(InputStream response) {
+    public List<Hotel> parse(InputStream stream) {
         return null;
     }
 }
