@@ -15,7 +15,7 @@
     <!-- import the dataSource definition -->
     <import resource="datasource-config.xml"/>
 
-    <context:component-scan base-package="org.octocode.booking.service, org.octocode.booking.parser"/>
+    <context:component-scan base-package="org.octocode.booking.service, org.octocode.booking.parser, org.octocode.booking.client"/>
 
     <!-- Configurer that replaces ${...} placeholders with values from a properties file -->
     <!-- (in this case, JDBC-related settings for the JPA EntityManager definition below) -->
@@ -53,7 +53,6 @@
         <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
         <jpa:repositories base-package="org.octocode.booking.data"/>
 
-        <bean id="objectMapper" class="com.fasterxml.jackson.databind.ObjectMapper">
-        </bean>
+        <bean id="objectMapper" class="com.fasterxml.jackson.databind.ObjectMapper"/>
     </beans>
 </beans>

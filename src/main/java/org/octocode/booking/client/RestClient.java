@@ -1,4 +1,4 @@
-package org.octocode.booking.parser;
+package org.octocode.booking.client;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -15,8 +15,9 @@ import java.net.URI;
 /**
  * @author Dmitriy Guskov
  */
-public abstract class RestParser implements Parser {
-    private static final Logger LOGGER = Logger.getLogger(RestParser.class);
+
+public abstract class RestClient implements Client {
+    private static final Logger LOGGER = Logger.getLogger(RestClient.class);
 
     public InputStream loadSource(URI url) {
         DefaultHttpClient httpclient = new DefaultHttpClient();
@@ -39,4 +40,8 @@ public abstract class RestParser implements Parser {
             httpclient.getConnectionManager().shutdown();
         }
     }
+
+    public abstract InputStream getHotelList();
+
+    public abstract InputStream getRoomsRates();
 }

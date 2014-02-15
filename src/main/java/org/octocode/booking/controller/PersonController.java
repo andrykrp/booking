@@ -6,7 +6,7 @@ import org.octocode.booking.model.Hotel;
 import org.octocode.booking.model.Person;
 import org.octocode.booking.parser.agoda.AgodaParser;
 import org.octocode.booking.parser.expedia.ExpediaParser;
-import org.octocode.booking.parser.wego.WegoParser;
+import org.octocode.booking.parser.wego.WegoClient;
 import org.octocode.booking.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -34,7 +34,7 @@ public class PersonController {
     @Autowired
     private AgodaParser agodaParser;
     @Autowired
-    private WegoParser wegoParser;
+    private WegoClient wegoParser;
 
     @RequestMapping(method = RequestMethod.GET)
     public String index() {
@@ -71,13 +71,13 @@ public class PersonController {
     public String savePerson() {
 //        String url = null;
 //        try {
-//            url = parser.getHotelList();
+//            url = parser.parseHotelList();
 //        } catch (URISyntaxException e) {
 //            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
 //        }
 //        parser.sendRequest(url);
 
-//        agodaParser.parse("/tmp/test.csv");
+//        agodaParser.parseHotelList("/tmp/test.csv");
 
         //method 1
         /*
@@ -106,11 +106,11 @@ public class PersonController {
 
     @RequestMapping("/expedia")
     public String expedia() {
-        try {
-            expediaParser.getHotelList();
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            expediaParser.parseHotelList();
+//        } catch (URISyntaxException e) {
+//            e.printStackTrace();
+//        }
 
         return "redirect:index";
     }
@@ -119,7 +119,7 @@ public class PersonController {
     public String expediaByCity(ModelMap model) {
         List<Hotel> hotels = new ArrayList<>();
         try {
-           hotels = expediaParser.getByCityName();
+           hotels = expediaParser.parseHotelList();
         } catch (Exception e) {
             LOGGER.error("error", e);
         }
