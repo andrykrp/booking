@@ -6,6 +6,7 @@ import org.octocode.booking.model.Hotel;
 import org.octocode.booking.model.Person;
 import org.octocode.booking.parser.agoda.AgodaParser;
 import org.octocode.booking.parser.expedia.ExpediaParser;
+import org.octocode.booking.parser.laterooms.LateroomsParser;
 import org.octocode.booking.parser.wego.WegoClient;
 import org.octocode.booking.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,8 @@ public class PersonController {
     private PersonService personService;
     @Autowired
     private ExpediaParser expediaParser;
+    @Autowired
+    private LateroomsParser lateroomsParser;
     @Autowired
     private AgodaParser agodaParser;
     @Autowired
@@ -120,6 +123,19 @@ public class PersonController {
         List<Hotel> hotels = new ArrayList<>();
         try {
            hotels = expediaParser.parseHotelList();
+        } catch (Exception e) {
+            LOGGER.error("error", e);
+        }
+        model.addAttribute("hotels", hotels);
+
+        return "layout/hotelsList";
+    }
+
+    @RequestMapping("/lateroomsGeo")
+    public String lateroomsGeo(ModelMap model) {
+        List<Hotel> hotels = new ArrayList<>();
+        try {
+           hotels = lateroomsParser.parseHotelList();
         } catch (Exception e) {
             LOGGER.error("error", e);
         }

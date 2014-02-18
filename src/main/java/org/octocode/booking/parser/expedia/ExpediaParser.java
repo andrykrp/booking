@@ -10,6 +10,7 @@ import org.octocode.booking.parser.expedia.dto.ExpediaHotel;
 import org.octocode.booking.parser.expedia.dto.HotelData;
 import org.octocode.booking.parser.mapper.ExpediaMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import java.io.InputStream;
@@ -27,6 +28,7 @@ public class ExpediaParser implements Parser {
     @Autowired
     private ObjectMapper objectMapper;
     @Autowired
+    @Qualifier("expediaClient")
     private RestClient client;
 
     public List<Hotel> parseHotelList() {
