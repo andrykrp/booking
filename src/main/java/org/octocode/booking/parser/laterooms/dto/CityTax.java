@@ -13,6 +13,8 @@ public class CityTax {
     private String OptedIn;
     private String IsCityTaxArea;
 
+    public CityTax() {}
+
     public String getIsCityTaxArea() {
         return IsCityTaxArea;
     }

@@ -1,9 +1,12 @@
 package org.octocode.booking.parser.laterooms.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import org.apache.log4j.Logger;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created with IntelliJ IDEA.
@@ -12,7 +15,10 @@ import java.util.List;
  * Time: 22:38
  * To change this template use File | Settings | File Templates.
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class HotelData {
+    private static final Logger LOGGER = Logger.getLogger(HotelData.class);
+
     private String hotel_ref;
     private String hotel_name;
     private String hotel_star;
@@ -28,12 +34,16 @@ public class HotelData {
     private String check_out;
     private String hotel_no_of_rooms;
     private List images;
-    @JacksonXmlElementWrapper(localName = "geo_code")
+    //@JacksonXmlElementWrapper(localName = "geo_code")
+    //@JacksonXmlProperty( localName = "long" )
+    //private String longitude;
+    //@JacksonXmlElementWrapper(localName = "geo_code")
+    //@JacksonXmlProperty( localName = "lat" )
+    //private String latitude;
+    private Map geo_code;
     @JacksonXmlProperty( localName = "long" )
     private String longitude;
-    @JacksonXmlElementWrapper(localName = "geo_code")
-    @JacksonXmlProperty( localName = "lat" )
-    private String latitude;
+    private String lat;
     private String hotel_distance;
     private String customer_rating;
     private String prices_from;
@@ -41,14 +51,17 @@ public class HotelData {
     private String star_accomodation_type;
     //@JacksonXmlProperty(localname="rack_rate")
     private String rack_rate;
-    private List<Rate> hotel_rooms;
+    //private List<Rate> hotel_rooms;
+    @JacksonXmlElementWrapper(localName = "hotel_rooms")
+    @JacksonXmlProperty( localName = "rate" )
+    private Rate rate;
     private String cancellation_type;
     private String cancellation_policy;
     @JacksonXmlElementWrapper(localName = "accepted_credit_cards")
-    @JacksonXmlProperty( localName = "credit_card" )
+    //@JacksonXmlProperty( localName = "credit_card" )
     private List<String> accepted_credit_cards;
     @JacksonXmlElementWrapper(localName = "accepted_payment_credit_cards")
-    @JacksonXmlProperty( localName = "credit_card" )
+    //@JacksonXmlProperty( localName = "credit_card" )
     private List<String> accepted_payment_credit_cards;
     @JacksonXmlElementWrapper(localName = "hotel_appeals")
     @JacksonXmlProperty( localName = "appeal" )
@@ -59,6 +72,20 @@ public class HotelData {
     private String hotel_important_information;
     private CityTax cityTax;
 
+    public HotelData() {}
+
+    public HotelData(String name) {
+        LOGGER.info("Constructor parameter: "+name);
+    }
+
+    public Rate getRate() {
+        return rate;
+    }
+
+    public void setRate(Rate rate) {
+        this.rate = rate;
+    }
+
     public String getHotel_ref() {
         return hotel_ref;
     }
@@ -67,7 +94,31 @@ public class HotelData {
         this.hotel_ref = hotel_ref;
     }
 
+    public Map getGeo_code() {
+        return geo_code;
+    }
+
+    public void setGeo_code(Map geo_code) {
+        this.geo_code = geo_code;
+    }
+
     public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
+    }
+
+    public String getLat() {
+        return lat;
+    }
+
+    public void setLat(String lat) {
+        this.lat = lat;
+    }
+
+    /*public String getLongitude() {
         return longitude;
     }
 
@@ -81,7 +132,7 @@ public class HotelData {
 
     public void setLatitude(String latitude) {
         this.latitude = latitude;
-    }
+    }*/
 
     public String getHotel_name() {
         return hotel_name;
@@ -241,14 +292,6 @@ public class HotelData {
 
     public void setRack_rate(String rack_rate) {
         this.rack_rate = rack_rate;
-    }
-
-    public List<Rate> getHotel_rooms() {
-        return hotel_rooms;
-    }
-
-    public void setHotel_rooms(List<Rate> hotel_rooms) {
-        this.hotel_rooms = hotel_rooms;
     }
 
     public String getCancellation_type() {

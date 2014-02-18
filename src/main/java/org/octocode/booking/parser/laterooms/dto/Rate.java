@@ -27,6 +27,8 @@ public class Rate {
     private String children;
     private String rooms_available;
 
+    public Rate() {}
+
     public String getDate() {
         return date;
     }

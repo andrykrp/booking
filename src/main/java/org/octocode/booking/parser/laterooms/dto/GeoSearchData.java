@@ -20,6 +20,8 @@ public class GeoSearchData {
     private Map response;
     private List<HotelData> hotel;
 
+    public GeoSearchData() {}
+
     public String getNoNamespaceSchemaLocation() {
         return noNamespaceSchemaLocation;
     }
