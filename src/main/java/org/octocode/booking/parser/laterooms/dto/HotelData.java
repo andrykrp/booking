@@ -61,7 +61,7 @@ public class HotelData {
     //@JacksonXmlProperty( localName = "credit_card" )
     private List<String> accepted_credit_cards;
     @JacksonXmlElementWrapper(localName = "accepted_payment_credit_cards")
-    //@JacksonXmlProperty( localName = "credit_card" )
+    //@JacksonXmlProperty(localName = "credit_card")
     private List<String> accepted_payment_credit_cards;
     @JacksonXmlElementWrapper(localName = "hotel_appeals")
     @JacksonXmlProperty( localName = "appeal" )
