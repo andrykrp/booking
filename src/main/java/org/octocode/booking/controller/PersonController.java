@@ -6,7 +6,7 @@ import org.octocode.booking.model.Hotel;
 import org.octocode.booking.model.Person;
 import org.octocode.booking.parser.agoda.AgodaParser;
 import org.octocode.booking.parser.expedia.ExpediaParser;
-import org.octocode.booking.parser.laterooms.LateroomsParser;
+import org.octocode.booking.parser.laterooms.LateRoomsParser;
 import org.octocode.booking.parser.wego.WegoClient;
 import org.octocode.booking.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +33,7 @@ public class PersonController {
     @Autowired
     private ExpediaParser expediaParser;
     @Autowired
-    private LateroomsParser lateroomsParser;
+    private LateRoomsParser lateroomsParser;
     @Autowired
     private AgodaParser agodaParser;
     @Autowired
