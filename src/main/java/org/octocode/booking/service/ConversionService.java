@@ -25,13 +25,8 @@ public class ConversionService {
         System.out.println(String.format("len1: %.0f, len2: %.0f, dist: %.0f", s1l, s2l, lev));
         System.out.println(String.format("Levenshtein: %.4f, JaroWinkler: %.4f, MatchRating: %b", pLevenshtein, pJaroWinkler, match));
 
-        if (pJaroWinkler > e)
-            return true;
+        return pJaroWinkler > e || pJaroWinkler > e && Math.abs(pLevenshtein - pJaroWinkler) < d || Math.abs(Math.max(pLevenshtein, pJaroWinkler) - d) < e && match;
 
-        if (pJaroWinkler > e && Math.abs(pLevenshtein - pJaroWinkler) < d)
-            return true;
-
-        return Math.abs(Math.max(pLevenshtein,pJaroWinkler) - d) < e && match;
     }
 
     public static void main(String[] args) throws EncoderException {
