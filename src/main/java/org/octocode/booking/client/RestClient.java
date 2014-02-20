@@ -11,6 +11,7 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URI;
+import java.util.Map;
 
 /**
  * @author Dmitriy Guskov
@@ -41,7 +42,7 @@ public abstract class RestClient implements Client {
         }
     }
 
-    public abstract InputStream getHotelList();
+    public abstract InputStream getHotelList(Map<String, String> params);
 
     public abstract InputStream getRoomsRates();
 }

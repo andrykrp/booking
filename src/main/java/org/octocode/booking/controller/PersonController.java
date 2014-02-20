@@ -17,9 +17,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/")
@@ -116,10 +119,21 @@ public class PersonController {
     }
 
     @RequestMapping("/expediaByCity")
-    public String expediaByCity(ModelMap model) {
+    public String expediaByCity(ModelMap model, HttpServletRequest request) {
         List<Hotel> hotels = new ArrayList<>();
         try {
-           hotels = expediaParser.parseHotelList();
+            Map<String, String> requestParams = new HashMap<>();
+//            requestParams.put("destinationString", request.getParameter("destinationString"));
+//            requestParams.put("countryCode", request.getParameter("countryCode"));
+//            requestParams.put("arrivalDate", request.getParameter("arrivalDate"));
+//            requestParams.put("departureDate", request.getParameter("departureDate"));
+
+            requestParams.put("destinationString", "Rome");
+            requestParams.put("countryCode", "IT");
+            requestParams.put("arrivalDate", "02/21/2014");
+            requestParams.put("departureDate", "02/27/2014");
+
+            hotels = expediaParser.parseHotelList(requestParams);
         } catch (Exception e) {
             LOGGER.error("error", e);
         }

@@ -14,6 +14,8 @@ public class ExpediaHotel {
     private String sessionId;
     private String cacheKey;
     private String cacheLocation;
+    @JsonProperty("moreResultsAvailable")
+    private Boolean hasMoreResults;
     @JsonProperty("HotelList")
     private HotelListWrapper hotelListWrapper;
 
@@ -47,5 +49,13 @@ public class ExpediaHotel {
 
     public HotelListWrapper getHotelListWrapper() {
         return hotelListWrapper;
+    }
+
+    public Boolean getHasMoreResults() {
+        return hasMoreResults;
+    }
+
+    public void setHasMoreResults(Boolean hasMoreResults) {
+        this.hasMoreResults = hasMoreResults;
     }
 }

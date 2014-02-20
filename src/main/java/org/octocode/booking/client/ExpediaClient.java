@@ -11,6 +11,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Map;
 
 /**
  * @author Dmitriy Guskov
@@ -44,23 +45,31 @@ public class ExpediaClient extends RestClient {
         return String.format("%032x", new BigInteger(1, md.digest()));
     }
 
-    @Override
-    public InputStream getHotelList() {
-        URI uri = null;
+    private URI getBaseURL() {
         try {
-            uri = new URIBuilder(service + version  + "/" + method)
+            return new URIBuilder(service + version  + "/" + method)
                     .addParameter("apikey", apikey)
-                    .addParameter("sig", createSignature())
                     .addParameter("cid", cid)
-                    .addParameter("destinationString", "Rome")
-                    .addParameter("countryCode", "IT")
-                    .addParameter("arrivalDate", "02/21/2014")
-                    .addParameter("departureDate", "02/27/2014")
-                    .addParameter("supplierCacheTolerance", "MED_ENHANCED")
-                    .addParameter("room1", "1,3")
                     .addParameter("locale", "RU")
                     .addParameter("customerIpAddress", "13.45.2.6")
-                    .addParameter("customerSessionId", "0ABAAA76-F84C-5A91-4422-0C7E0A693B19")
+                    .build();
+        } catch (URISyntaxException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public InputStream getHotelList(Map<String, String> params) {
+        URI uri = null;
+        try {
+            uri = new URIBuilder(getBaseURL())
+                    .addParameter("sig", createSignature())
+                    .addParameter("destinationString", params.get("destinationString"))
+                    .addParameter("countryCode", params.get("countryCode"))
+                    .addParameter("arrivalDate", params.get("arrivalDate"))
+                    .addParameter("departureDate", params.get("departureDate"))
+                    .addParameter("supplierCacheTolerance", "MED_ENHANCED")
+                    .addParameter("room1", "1,3")
                     .addParameter("numberOfResults", "200")
                     .build();
         } catch (URISyntaxException e) {
@@ -71,8 +80,23 @@ public class ExpediaClient extends RestClient {
         return loadSource(uri);
     }
 
+    public InputStream getNextHotelList(Map<String, String> pagingParams) {
+        URIBuilder uriBuilder = new URIBuilder(getBaseURL());
+        for (Map.Entry entry : pagingParams.entrySet()) {
+            uriBuilder.addParameter((String) entry.getKey(), (String) entry.getValue());
+        }
+        URI uri = null;
+        try {
+            uri = uriBuilder.build();
+        } catch (URISyntaxException e) {
+            throw new RuntimeException(e);
+        }
+
+        return loadSource(uri);
+    }
+
     @Override
     public InputStream getRoomsRates() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return null;
     }
 }
