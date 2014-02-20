@@ -16,10 +16,18 @@ import java.net.URISyntaxException;
 @Component
 public class LateroomsClient extends RestClient {
     private static final Logger LOGGER = Logger.getLogger(LateroomsClient.class);
-    @Value("${laterooms.url}")
+    @Value("${laterooms.url}")//coordinatesCheck.url
     private String url;
     @Value("${laterooms.aid}")
     private String aid;
+
+    String latitude = "27.2578957";
+    String longitude = "33.8116067";
+
+    public void setLocation(String latit, String longit) {
+        latitude = latit;
+        longitude = longit;
+    }
 
     @Override
     public InputStream getHotelList() {
@@ -28,8 +36,8 @@ public class LateroomsClient extends RestClient {
             uri = new URIBuilder(url)
                     .addParameter("aid", aid)
                     .addParameter("rtype", "6")
-                    .addParameter("geolon", "33.8116067")
-                    .addParameter("geolat", "27.2578957")
+                    .addParameter("geolon", longitude)
+                    .addParameter("geolat", latitude)
                     .build();
             LOGGER.info("URL built = " + uri.toString());
         } catch (URISyntaxException e) {

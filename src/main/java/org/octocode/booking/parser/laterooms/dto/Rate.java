@@ -9,6 +9,7 @@ package org.octocode.booking.parser.laterooms.dto;
  */
 public class Rate {
     private String date;
+    private String rate;
     private String formatted_date;
     private String price;
     private String roomtype;
@@ -35,6 +36,14 @@ public class Rate {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public String getRate() {
+        return rate;
+    }
+
+    public void setRate(String rate) {
+        this.rate = rate;
     }
 
     public String getFormatted_date() {

@@ -8,53 +8,48 @@ import org.apache.log4j.Logger;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created with IntelliJ IDEA.
- * User: mbobrov
- * Date: 17.02.14
- * Time: 22:38
- * To change this template use File | Settings | File Templates.
- */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class HotelData {
     private static final Logger LOGGER = Logger.getLogger(HotelData.class);
 
-    private String hotel_ref;
+    //@JacksonXmlProperty( localName = "hotel_ref" )
+    private Long hotel_ref;
+    //@JacksonXmlProperty( localName = "hotel_name" )
     private String hotel_name;
-    private String hotel_star;
-    private String hotel_address;
-    private String hotel_city;
-    private String hotel_county;
-    private String hotel_pcode;
+    @JacksonXmlProperty( localName = "hotel_star" )
+    private String hotelRating;
+    @JacksonXmlProperty( localName = "hotel_address" )
+    private String address;
+    @JacksonXmlProperty( localName = "hotel_city" )
+    private String city;
+    @JacksonXmlProperty( localName = "hotel_county" )
+    private String countryCode;
+    @JacksonXmlProperty( localName = "hotel_pcode" )
+    private String postalCode;
     private String hotel_max_child_age;
-    private String hotel_description;
+    @JacksonXmlProperty( localName = "hotel_description" )
+    private String locationDescription;
     private String hotel_directions;
-    private String hotel_link;
+    @JacksonXmlProperty( localName = "hotel_link" )
+    private String deepLink;
     private String check_in;
     private String check_out;
     private String hotel_no_of_rooms;
-    private List images;
-    //@JacksonXmlElementWrapper(localName = "geo_code")
-    //@JacksonXmlProperty( localName = "long" )
-    //private String longitude;
-    //@JacksonXmlElementWrapper(localName = "geo_code")
-    //@JacksonXmlProperty( localName = "lat" )
-    //private String latitude;
-    private Map geo_code;
-    @JacksonXmlProperty( localName = "long" )
-    private String longitude;
-    private String lat;
+    @JacksonXmlProperty( localName = "images" )
+    private String thumbNailUrl;
+    private Map<String, String> geo_code;
     private String hotel_distance;
     private String customer_rating;
-    private String prices_from;
+    @JacksonXmlProperty( localName = "prices_from" )
+    private String lowRate;
     private String star_awarded_by;
     private String star_accomodation_type;
     //@JacksonXmlProperty(localname="rack_rate")
     private String rack_rate;
     //private List<Rate> hotel_rooms;
     @JacksonXmlElementWrapper(localName = "hotel_rooms")
-    @JacksonXmlProperty( localName = "rate" )
-    private Rate rate;
+    //@JacksonXmlProperty( localName = "rate" )
+    private List<Rate> rate;
     private String cancellation_type;
     private String cancellation_policy;
     @JacksonXmlElementWrapper(localName = "accepted_credit_cards")
@@ -70,6 +65,8 @@ public class HotelData {
     @JacksonXmlProperty( localName = "facility" )
     private List<String> hotel_facilities;
     private String hotel_important_information;
+    @JacksonXmlElementWrapper(useWrapping=false)
+    @JacksonXmlProperty( localName = "CityTax" )
     private CityTax cityTax;
 
     public HotelData() {}
@@ -78,19 +75,19 @@ public class HotelData {
         LOGGER.info("Constructor parameter: "+name);
     }
 
-    public Rate getRate() {
+    public List<Rate> getRate() {
         return rate;
     }
 
-    public void setRate(Rate rate) {
+    public void setRate(List<Rate> rate) {
         this.rate = rate;
     }
 
-    public String getHotel_ref() {
+    public Long getHotel_ref() {
         return hotel_ref;
     }
 
-    public void setHotel_ref(String hotel_ref) {
+    public void setHotel_ref(Long hotel_ref) {
         this.hotel_ref = hotel_ref;
     }
 
@@ -102,38 +99,6 @@ public class HotelData {
         this.geo_code = geo_code;
     }
 
-    public String getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(String longitude) {
-        this.longitude = longitude;
-    }
-
-    public String getLat() {
-        return lat;
-    }
-
-    public void setLat(String lat) {
-        this.lat = lat;
-    }
-
-    /*public String getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(String longitude) {
-        this.longitude = longitude;
-    }
-
-    public String getLatitude() {
-        return latitude;
-    }
-
-    public void setLatitude(String latitude) {
-        this.latitude = latitude;
-    }*/
-
     public String getHotel_name() {
         return hotel_name;
     }
@@ -142,44 +107,44 @@ public class HotelData {
         this.hotel_name = hotel_name;
     }
 
-    public String getHotel_star() {
-        return hotel_star;
+    public String getHotelRating() {
+        return hotelRating;
     }
 
-    public void setHotel_star(String hotel_star) {
-        this.hotel_star = hotel_star;
+    public void setHotelRating(String hotelRating) {
+        this.hotelRating = hotelRating;
     }
 
-    public String getHotel_address() {
-        return hotel_address;
+    public String getAddress() {
+        return address;
     }
 
-    public void setHotel_address(String hotel_address) {
-        this.hotel_address = hotel_address;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    public String getHotel_city() {
-        return hotel_city;
+    public String getCity() {
+        return city;
     }
 
-    public void setHotel_city(String hotel_city) {
-        this.hotel_city = hotel_city;
+    public void setCity(String city) {
+        this.city = city;
     }
 
-    public String getHotel_county() {
-        return hotel_county;
+    public String getCountryCode() {
+        return countryCode;
     }
 
-    public void setHotel_county(String hotel_county) {
-        this.hotel_county = hotel_county;
+    public void setCountryCode(String countryCode) {
+        this.countryCode = countryCode;
     }
 
-    public String getHotel_pcode() {
-        return hotel_pcode;
+    public String getPostalCode() {
+        return postalCode;
     }
 
-    public void setHotel_pcode(String hotel_pcode) {
-        this.hotel_pcode = hotel_pcode;
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
     }
 
     public String getHotel_max_child_age() {
@@ -190,12 +155,12 @@ public class HotelData {
         this.hotel_max_child_age = hotel_max_child_age;
     }
 
-    public String getHotel_description() {
-        return hotel_description;
+    public String getLocationDescription() {
+        return locationDescription;
     }
 
-    public void setHotel_description(String hotel_description) {
-        this.hotel_description = hotel_description;
+    public void setLocationDescription(String locationDescription) {
+        this.locationDescription = locationDescription;
     }
 
     public String getHotel_directions() {
@@ -206,12 +171,12 @@ public class HotelData {
         this.hotel_directions = hotel_directions;
     }
 
-    public String getHotel_link() {
-        return hotel_link;
+    public String getDeepLink() {
+        return deepLink;
     }
 
-    public void setHotel_link(String hotel_link) {
-        this.hotel_link = hotel_link;
+    public void setDeepLink(String deepLink) {
+        this.deepLink = deepLink;
     }
 
     public String getCheck_in() {
@@ -238,12 +203,12 @@ public class HotelData {
         this.hotel_no_of_rooms = hotel_no_of_rooms;
     }
 
-    public List getImages() {
-        return images;
+    public String getThumbNailUrl() {
+        return thumbNailUrl;
     }
 
-    public void setImages(List images) {
-        this.images = images;
+    public void setThumbNailUrl(String thumbNailUrl) {
+        this.thumbNailUrl = thumbNailUrl;
     }
 
     public String getHotel_distance() {
@@ -262,12 +227,12 @@ public class HotelData {
         this.customer_rating = customer_rating;
     }
 
-    public String getPrices_from() {
-        return prices_from;
+    public String getLowRate() {
+        return lowRate;
     }
 
-    public void setPrices_from(String prices_from) {
-        this.prices_from = prices_from;
+    public void setLowRate(String lowRate) {
+        this.lowRate = lowRate;
     }
 
     public String getStar_awarded_by() {

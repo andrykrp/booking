@@ -1,5 +1,8 @@
 package org.octocode.booking.parser.laterooms.dto;
 
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+
 /**
  * Created with IntelliJ IDEA.
  * User: mbobrov
@@ -8,19 +11,25 @@ package org.octocode.booking.parser.laterooms.dto;
  * To change this template use File | Settings | File Templates.
  */
 public class CityTax {
+    @JacksonXmlProperty( localName = "TypeName" )
     private String typeName;
-    private String Value;
-    private String OptedIn;
-    private String IsCityTaxArea;
+    @JacksonXmlProperty( localName = "Value" )
+    @JacksonXmlElementWrapper(useWrapping=false)
+    private TagValue value;
+    @JacksonXmlProperty( localName = "OptedIn" )
+    @JacksonXmlElementWrapper(useWrapping=false)
+    private TagValue optedIn;
+    @JacksonXmlProperty( localName = "IsCityTaxArea" )
+    private String isCityTaxArea;
 
     public CityTax() {}
 
     public String getIsCityTaxArea() {
-        return IsCityTaxArea;
+        return isCityTaxArea;
     }
 
     public void setIsCityTaxArea(String isCityTaxArea) {
-        IsCityTaxArea = isCityTaxArea;
+        this.isCityTaxArea = isCityTaxArea;
     }
 
     public String getTypeName() {
@@ -31,20 +40,21 @@ public class CityTax {
         this.typeName = typeName;
     }
 
-    public String getValue() {
-        return Value;
+    public TagValue getValue() {
+        return value;
     }
 
-    public void setValue(String value) {
-        Value = value;
+    public void setValue(TagValue value) {
+        this.value = value;
     }
 
-    public String getOptedIn() {
-        return OptedIn;
+    public TagValue getOptedIn() {
+        return optedIn;
     }
 
-    public void setOptedIn(String optedIn) {
-        OptedIn = optedIn;
+    public void setOptedIn(TagValue optedIn) {
+        this.optedIn = optedIn;
     }
+
 
 }

@@ -1,5 +1,6 @@
 package org.octocode.booking.parser.laterooms.dto;
 
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 
@@ -18,6 +19,8 @@ public class GeoSearchData {
     @JacksonXmlProperty( isAttribute = true )
     private String noNamespaceSchemaLocation;
     private Map response;
+    @JacksonXmlElementWrapper(useWrapping=false)
+    @JacksonXmlProperty(localName = "hotel")
     private List<HotelData> hotel;
 
     public GeoSearchData() {}

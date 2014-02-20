@@ -12,10 +12,7 @@ import org.octocode.booking.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.net.URISyntaxException;
@@ -123,6 +120,21 @@ public class PersonController {
         List<Hotel> hotels = new ArrayList<>();
         try {
            hotels = expediaParser.parseHotelList();
+        } catch (Exception e) {
+            LOGGER.error("error", e);
+        }
+        model.addAttribute("hotels", hotels);
+
+        return "layout/hotelsList";
+    }
+
+    @RequestMapping("/laterooms")
+    public String laterooms(ModelMap model,
+                            @RequestParam(value = "lat", required = true) String latitude,
+                            @RequestParam(value = "long", required = true) String longitude) {
+        List<Hotel> hotels = new ArrayList<>();
+        try {
+           hotels = lateroomsParser.parseHotelList(latitude, longitude);
         } catch (Exception e) {
             LOGGER.error("error", e);
         }
