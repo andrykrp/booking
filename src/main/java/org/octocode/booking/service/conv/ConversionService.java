@@ -24,7 +24,7 @@ public class ConversionService {
     }
 
     public void compare(List<HotelData> o1, List<HotelData> o2) {
-        Matcher lStringMatcher = new StringMatcher(0.75);
+        Matcher lStringMatcher = new StringMatcher(0.8);
         Matcher mStringMatcher = new StringMatcher(0.9);
         Matcher hStringMatcher = new StringMatcher(0.95);
         Matcher distanceMatcher = new DistanceMatcher();
