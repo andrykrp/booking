@@ -44,5 +44,5 @@ public abstract class RestClient implements Client {
 
     public abstract InputStream getHotelList(Map<String, String> params);
 
-    public abstract InputStream getRoomsRates();
+    public abstract InputStream getRoomsRates(Map<String, String> params);
 }

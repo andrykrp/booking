@@ -24,7 +24,8 @@ public class ExpediaClient extends RestClient {
     public String service;
     @Value("${expedia.apiVersion}")
     public String version;
-    public String method = "list";
+    private String hotelListContext = "list";
+    private String roomListContext = "avail";
     @Value("${expedia.cid}")
     public String cid;
     @Value("${expedia.apiKey}")
@@ -45,9 +46,9 @@ public class ExpediaClient extends RestClient {
         return String.format("%032x", new BigInteger(1, md.digest()));
     }
 
-    private URI getBaseURL() {
+    private URI getBaseURL(String requestContext) {
         try {
-            return new URIBuilder(service + version  + "/" + method)
+            return new URIBuilder(service + version  + "/" + requestContext)
                     .addParameter("apikey", apikey)
                     .addParameter("cid", cid)
                     .addParameter("locale", "RU")
@@ -62,7 +63,7 @@ public class ExpediaClient extends RestClient {
     public InputStream getHotelList(Map<String, String> params) {
         URI uri = null;
         try {
-            uri = new URIBuilder(getBaseURL())
+            uri = new URIBuilder(getBaseURL(hotelListContext))
                     .addParameter("sig", createSignature())
                     .addParameter("destinationString", params.get("destinationString"))
                     .addParameter("countryCode", params.get("countryCode"))
@@ -81,7 +82,7 @@ public class ExpediaClient extends RestClient {
     }
 
     public InputStream getNextHotelList(Map<String, String> pagingParams) {
-        URIBuilder uriBuilder = new URIBuilder(getBaseURL());
+        URIBuilder uriBuilder = new URIBuilder(getBaseURL(hotelListContext));
         for (Map.Entry entry : pagingParams.entrySet()) {
             uriBuilder.addParameter((String) entry.getKey(), (String) entry.getValue());
         }
@@ -96,7 +97,22 @@ public class ExpediaClient extends RestClient {
     }
 
     @Override
-    public InputStream getRoomsRates() {
-        return null;
+    public InputStream getRoomsRates(Map<String, String> params) {
+        URI uri = null;
+        try {
+            uri = new URIBuilder(getBaseURL(roomListContext))
+                    .addParameter("currencyCode", "USD")
+                    .addParameter("hotelId", params.get("hotelId"))
+                    .addParameter("arrivalDate", params.get("arrivalDate"))
+                    .addParameter("departureDate", params.get("departureDate"))
+                    .addParameter("includeDetails", "true")
+                    .addParameter("room1", params.get("room1"))
+                    .addParameter("options", "HOTEL_DETAILS,ROOM_TYPES,ROOM_AMENITIES,PROPERTY_AMENITIES,HOTEL_IMAGES")
+                    .build();
+        } catch (URISyntaxException e) {
+            throw new RuntimeException(e);
+        }
+
+        return loadSource(uri);
     }
 }

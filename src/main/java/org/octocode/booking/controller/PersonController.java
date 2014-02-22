@@ -141,4 +141,9 @@ public class PersonController {
 
         return "layout/hotelsList";
     }
+
+    @RequestMapping("/expediaHotelById")
+    public String expediaHotelById(ModelMap model) {
+        return null;
+    }
 }
