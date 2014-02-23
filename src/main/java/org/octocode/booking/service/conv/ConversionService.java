@@ -43,7 +43,7 @@ public class ConversionService {
 
         Date pStart = new Date();
         int size = 0;
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 8000; i++) {
             System.out.println("------------------------------------------------------------");
             System.out.println("number: " + (i + 1));
 
