@@ -52,7 +52,6 @@ public class ExpediaClient extends RestClient {
                     .addParameter("apikey", apikey)
                     .addParameter("cid", cid)
                     .addParameter("locale", "RU")
-                    .addParameter("customerIpAddress", "13.45.2.6")
                     .build();
         } catch (URISyntaxException e) {
             throw new RuntimeException(e);
@@ -72,6 +71,7 @@ public class ExpediaClient extends RestClient {
                     .addParameter("supplierCacheTolerance", "MED_ENHANCED")
                     .addParameter("room1", "1,3")
                     .addParameter("numberOfResults", "200")
+                    .addParameter("customerIpAddress", "13.45.2.6")
                     .build();
         } catch (URISyntaxException e) {
             throw new RuntimeException(e);

@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -130,8 +131,8 @@ public class PersonController {
 
             requestParams.put("destinationString", "Rome");
             requestParams.put("countryCode", "IT");
-            requestParams.put("arrivalDate", "02/21/2014");
-            requestParams.put("departureDate", "02/27/2014");
+            requestParams.put("arrivalDate", "03/21/2014");
+            requestParams.put("departureDate", "03/27/2014");
 
             hotels = expediaParser.parseHotelList(requestParams);
         } catch (Exception e) {
@@ -144,6 +145,18 @@ public class PersonController {
 
     @RequestMapping("/expediaHotelById")
     public String expediaHotelById(ModelMap model) {
+        Map<String, String> requestParams = new HashMap<>();
+        requestParams.put("arrivalDate", "03/21/2014");
+        requestParams.put("departureDate", "03/27/2014");
+        requestParams.put("hotelId", "206800");
+        requestParams.put("room1", "1");
+
+        try {
+            expediaParser.getRoomRates(requestParams);
+        } catch (IOException e) {
+            LOGGER.error("error", e);
+        }
+
         return null;
     }
 }

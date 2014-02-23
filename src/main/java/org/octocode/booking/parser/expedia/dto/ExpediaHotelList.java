@@ -9,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonRootName;
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonRootName("HotelListResponse")
-public class ExpediaHotel {
+public class ExpediaHotelList {
     @JsonProperty("customerSessionId")
     private String sessionId;
     private String cacheKey;
