@@ -29,6 +29,8 @@ public class HotelData {
     private String hotel_max_child_age;
     @JacksonXmlProperty( localName = "hotel_description" )
     private String locationDescription;
+    @JacksonXmlProperty( localName = "alternate_description" )
+    private String shortDescription;
     private String hotel_directions;
     @JacksonXmlProperty( localName = "hotel_link" )
     private String deepLink;
@@ -42,6 +44,8 @@ public class HotelData {
     private String customer_rating;
     @JacksonXmlProperty( localName = "prices_from" )
     private String lowRate;
+    @JacksonXmlProperty( localName = "hotel_currency" )
+    private String rateCurrencyCode;
     private String star_awarded_by;
     private String star_accomodation_type;
     //@JacksonXmlProperty(localname="rack_rate")
@@ -52,6 +56,12 @@ public class HotelData {
     private List<Rate> rate;
     private String cancellation_type;
     private String cancellation_policy;
+    private String hotel_cancellation_days;
+    private String hotel_cancellation_hours;
+    private String hotel_terms;
+    private String conditions_of_booking;
+    /* Privacy policy, terms & conditions and disclaimer are omitted,
+    as they are the same for all hotels and bookings*/
     @JacksonXmlElementWrapper(localName = "accepted_credit_cards")
     //@JacksonXmlProperty( localName = "credit_card" )
     private List<String> accepted_credit_cards;
@@ -89,6 +99,54 @@ public class HotelData {
 
     public void setHotel_ref(Long hotel_ref) {
         this.hotel_ref = hotel_ref;
+    }
+
+    public String getShortDescription() {
+        return shortDescription;
+    }
+
+    public void setShortDescription(String shortDescription) {
+        this.shortDescription = shortDescription;
+    }
+
+    public String getRateCurrencyCode() {
+        return rateCurrencyCode;
+    }
+
+    public void setRateCurrencyCode(String rateCurrencyCode) {
+        this.rateCurrencyCode = rateCurrencyCode;
+    }
+
+    public String getHotel_cancellation_days() {
+        return hotel_cancellation_days;
+    }
+
+    public void setHotel_cancellation_days(String hotel_cancellation_days) {
+        this.hotel_cancellation_days = hotel_cancellation_days;
+    }
+
+    public String getHotel_cancellation_hours() {
+        return hotel_cancellation_hours;
+    }
+
+    public void setHotel_cancellation_hours(String hotel_cancellation_hours) {
+        this.hotel_cancellation_hours = hotel_cancellation_hours;
+    }
+
+    public String getHotel_terms() {
+        return hotel_terms;
+    }
+
+    public void setHotel_terms(String hotel_terms) {
+        this.hotel_terms = hotel_terms;
+    }
+
+    public String getConditions_of_booking() {
+        return conditions_of_booking;
+    }
+
+    public void setConditions_of_booking(String conditions_of_booking) {
+        this.conditions_of_booking = conditions_of_booking;
     }
 
     public Map getGeo_code() {

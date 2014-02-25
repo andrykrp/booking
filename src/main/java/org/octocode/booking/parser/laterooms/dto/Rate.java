@@ -1,17 +1,16 @@
 package org.octocode.booking.parser.laterooms.dto;
 
-/**
- * Created with IntelliJ IDEA.
- * User: mbobrov
- * Date: 17.02.14
- * Time: 23:02
- * To change this template use File | Settings | File Templates.
- */
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Rate {
     private String date;
-    private String rate;
     private String formatted_date;
     private String price;
+    private String hotelcurrencyprice;
+    private String numeric_price;
+    private String numeric_hotelcurrencyprice;
+    private String requested_currency;
     private String roomtype;
     private String breakfast_included;
     private String dinner_included;
@@ -38,14 +37,6 @@ public class Rate {
         this.date = date;
     }
 
-    public String getRate() {
-        return rate;
-    }
-
-    public void setRate(String rate) {
-        this.rate = rate;
-    }
-
     public String getFormatted_date() {
         return formatted_date;
     }
@@ -60,6 +51,38 @@ public class Rate {
 
     public void setPrice(String price) {
         this.price = price;
+    }
+
+    public String getHotelcurrencyprice() {
+        return hotelcurrencyprice;
+    }
+
+    public void setHotelcurrencyprice(String hotelcurrencyprice) {
+        this.hotelcurrencyprice = hotelcurrencyprice;
+    }
+
+    public String getNumeric_price() {
+        return numeric_price;
+    }
+
+    public void setNumeric_price(String numeric_price) {
+        this.numeric_price = numeric_price;
+    }
+
+    public String getNumeric_hotelcurrencyprice() {
+        return numeric_hotelcurrencyprice;
+    }
+
+    public void setNumeric_hotelcurrencyprice(String numeric_hotelcurrencyprice) {
+        this.numeric_hotelcurrencyprice = numeric_hotelcurrencyprice;
+    }
+
+    public String getRequested_currency() {
+        return requested_currency;
+    }
+
+    public void setRequested_currency(String requested_currency) {
+        this.requested_currency = requested_currency;
     }
 
     public String getRoomtype() {

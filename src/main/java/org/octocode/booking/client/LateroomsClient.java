@@ -29,6 +29,25 @@ public class LateroomsClient extends RestClient {
         longitude = longit;
     }
 
+    public InputStream getHotelRates(String hotelId, String date, String nights) {
+        URI uri = null;
+        try {
+            uri = new URIBuilder(url)
+                    .addParameter("aid", aid)
+                    .addParameter("rtype", "7")
+                    .addParameter("hids", hotelId)
+                    .addParameter("sdate", date)
+                    .addParameter("nights", nights)
+                    .build();
+            LOGGER.info("URL built = " + uri.toString());
+        } catch (URISyntaxException e) {
+            LOGGER.info("URL building exception: URL=" + uri.toString() + ", exception: "+e);
+            throw new RuntimeException(e);
+        }
+
+        LOGGER.info("URL = " + uri.toString());
+        return loadSource(uri);
+    }
     @Override
     public InputStream getHotelList() {
         URI uri = null;

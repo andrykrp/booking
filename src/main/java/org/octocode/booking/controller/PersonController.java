@@ -7,6 +7,7 @@ import org.octocode.booking.model.Person;
 import org.octocode.booking.parser.agoda.AgodaParser;
 import org.octocode.booking.parser.expedia.ExpediaParser;
 import org.octocode.booking.parser.laterooms.LateRoomsParser;
+import org.octocode.booking.parser.laterooms.dto.HotelRatesData;
 import org.octocode.booking.parser.wego.WegoClient;
 import org.octocode.booking.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -140,6 +141,16 @@ public class PersonController {
         }
         model.addAttribute("hotels", hotels);
 
+        return "layout/hotelsList";
+    }
+
+    @RequestMapping("/lateroomsRates")
+    public String lateroomsRates(ModelMap model) {
+        try {
+            HotelRatesData data = lateroomsParser.getRatesForHotel("152", "2014-02-26", "1");
+        } catch (Exception e) {
+                    LOGGER.error("error", e);
+        }
         return "layout/hotelsList";
     }
 
