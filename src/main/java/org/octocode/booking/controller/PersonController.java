@@ -141,7 +141,7 @@ public class PersonController {
                 }
                 model.addAttribute("hotels", hotels);
         
-                return "layout/hotelsList";;
+                return "layout/hotelsList";
     }
 
     @RequestMapping("/expediaHotelById")
