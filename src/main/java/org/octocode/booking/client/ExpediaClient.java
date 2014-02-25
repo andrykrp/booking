@@ -26,6 +26,7 @@ public class ExpediaClient extends RestClient {
     public String version;
     private String hotelListContext = "list";
     private String roomListContext = "avail";
+    private String roomImages = "roomImages";
     @Value("${expedia.cid}")
     public String cid;
     @Value("${expedia.apiKey}")
@@ -72,6 +73,7 @@ public class ExpediaClient extends RestClient {
                     .addParameter("room1", "1,3")
                     .addParameter("numberOfResults", "200")
                     .addParameter("customerIpAddress", "13.45.2.6")
+                    .addParameter("options", "HOTEL_SUMMARY,DEEP_LINKS")
                     .build();
         } catch (URISyntaxException e) {
             throw new RuntimeException(e);
@@ -105,9 +107,11 @@ public class ExpediaClient extends RestClient {
                     .addParameter("hotelId", params.get("hotelId"))
                     .addParameter("arrivalDate", params.get("arrivalDate"))
                     .addParameter("departureDate", params.get("departureDate"))
-                    .addParameter("includeDetails", "true")
                     .addParameter("room1", params.get("room1"))
-                    .addParameter("options", "HOTEL_DETAILS,ROOM_TYPES,ROOM_AMENITIES,PROPERTY_AMENITIES,HOTEL_IMAGES")
+//                    .addParameter("includeDetails", "true")
+                    .addParameter("includeRoomImages", "true")
+                    .addParameter("options", "ROOM_AMENITIES")
+                    .addParameter("minorRev", "26")
                     .build();
         } catch (URISyntaxException e) {
             throw new RuntimeException(e);

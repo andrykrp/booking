@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
  */
 
 @Component
-public class ExpediaMapper extends ConfigurableMapper {
+public class ExpediaHotelMapper extends ConfigurableMapper {
     @Override
     protected void configure(MapperFactory factory) {
         factory.classMap(HotelData.class, Hotel.class)

@@ -5,11 +5,14 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.log4j.Logger;
 import org.octocode.booking.client.ExpediaClient;
 import org.octocode.booking.model.Hotel;
+import org.octocode.booking.model.Room;
 import org.octocode.booking.parser.Parser;
 import org.octocode.booking.parser.expedia.dto.ExpediaHotelList;
 import org.octocode.booking.parser.expedia.dto.HotelData;
 import org.octocode.booking.parser.expedia.dto.HotelRates;
-import org.octocode.booking.parser.mapper.ExpediaMapper;
+import org.octocode.booking.parser.expedia.dto.RoomDetails;
+import org.octocode.booking.parser.mapper.ExpediaHotelMapper;
+import org.octocode.booking.parser.mapper.ExpediaRoomMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -27,7 +30,9 @@ import java.util.Map;
 public class ExpediaParser implements Parser {
     private static final Logger LOGGER = Logger.getLogger(ExpediaParser.class);
     @Autowired
-    private ExpediaMapper expediaMapper;
+    private ExpediaHotelMapper expediaHotelMapper;
+    @Autowired
+    private ExpediaRoomMapper expediaRoomMapper;
     @Autowired
     private ObjectMapper objectMapper;
     @Autowired
@@ -53,7 +58,7 @@ public class ExpediaParser implements Parser {
             InputStream sourceStream = client.getHotelList(requestParams);
             ExpediaHotelList expediaHotelList = objectMapper.readValue(sourceStream, ExpediaHotelList.class);
             for (HotelData data : expediaHotelList.getHotelListWrapper().getHotelList()) {
-                hotels.add(expediaMapper.map(data, Hotel.class));
+                hotels.add(expediaHotelMapper.map(data, Hotel.class));
             }
             if (expediaHotelList.getHasMoreResults()) {
                 hotels.addAll(parseNextHotelList(getPagingParameters(expediaHotelList)));
@@ -70,7 +75,7 @@ public class ExpediaParser implements Parser {
         ExpediaHotelList expediaHotelList = objectMapper.readValue(sourceStream, ExpediaHotelList.class);
         if (expediaHotelList.getHotelListWrapper() != null) {
             for (HotelData data : expediaHotelList.getHotelListWrapper().getHotelList()) {
-                hotels.add(expediaMapper.map(data, Hotel.class));
+                hotels.add(expediaHotelMapper.map(data, Hotel.class));
             }
             if (expediaHotelList.getHasMoreResults()) {
                 hotels.addAll(parseNextHotelList(getPagingParameters(expediaHotelList)));
@@ -80,12 +85,20 @@ public class ExpediaParser implements Parser {
         return hotels;
     }
 
-    public void getRoomRates(Map<String, String> requestParams) throws IOException {
+    public List<Room> getRoomRates(Map<String, String> requestParams) throws IOException {
+        List<Room> rooms = new ArrayList<>();
         objectMapper.configure(DeserializationFeature.UNWRAP_ROOT_VALUE, true);
 
         InputStream result = client.getRoomsRates(requestParams);
         HotelRates hotelRates = objectMapper.readValue(result, HotelRates.class);
+        if (hotelRates.getRoomDetails() != null) {
+            for (RoomDetails roomDetails : hotelRates.getRoomDetails()) {
+                rooms.add(expediaRoomMapper.map(roomDetails, Room.class));
+            }
+        }
+
         System.out.println(hotelRates);
+        return rooms;
     }
 
     private Map<String, String> getPagingParameters(ExpediaHotelList hotelWrapper) {
