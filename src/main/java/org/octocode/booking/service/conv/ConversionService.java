@@ -3,18 +3,26 @@ package org.octocode.booking.service.conv;
 import org.octocode.booking.service.conv.matcher.*;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 @Service
 public class ConversionService {
-    private static final int NTHREDS = 20;
+    private static final int NTHREDS = 16;
+    public static final int ITER = 36469;
     private final List<HotelComparator> comparators;
+
+    private static int success = 0;
+
+    public static synchronized int getSuccess() {
+        return success;
+    }
+
+    public static synchronized void incSuccess() {
+        success++;
+    }
 
     public ConversionService() {
         List<HotelComparator> list = new ArrayList<>();
@@ -37,17 +45,27 @@ public class ConversionService {
 
     public static void main(String[] args) throws Exception {
         ConversionService service = new ConversionService();
-        List<HotelData> e = Collections.unmodifiableList(HotelData.getExpediaData());
-        List<HotelData> l = Collections.unmodifiableList(HotelData.getLateroomsData());
-        service.compare(l, e);
+        List<HotelData> elist = HotelDataUtils.getExpediaData();
+        Map<CoordinateMapKey, List<HotelData>> emap = HotelDataUtils.getCoordinateMap(elist);
+
+        List<HotelData> l = HotelDataUtils.getLateroomsData();
+        service.compare(l, emap);
     }
 
-    public void compare(final List<HotelData> o1, final List<HotelData> o2) {
+    public void compare(final List<HotelData> list, final Map<CoordinateMapKey, List<HotelData>> map) {
         ExecutorService executor = Executors.newFixedThreadPool(NTHREDS);
 
         Date pStart = new Date();
-        for (int i = 0; i < 100; i++) {
-            HotelComparatorRunnable worker = new HotelComparatorRunnable(comparators, o1.get(i), o2, i);
+        for (int i = 0; i < ITER; i++) {
+            final HotelData hotelData = list.get(i);
+            List<HotelData> dataList = map.get(hotelData.getKey());
+
+            if (dataList == null) {
+                System.out.println("failure: " + hotelData);
+                dataList = HotelDataUtils.getCoordinateDomain(hotelData.getKey(), map);
+            }
+
+            HotelComparatorRunnable worker = new HotelComparatorRunnable(comparators, hotelData, dataList, i);
             executor.execute(worker);
         }
 
@@ -61,7 +79,8 @@ public class ConversionService {
         System.out.println("Finished all threads");
 
         Date pEnd = new Date();
-        System.out.println(String.format("Mapping size=%d duration=%.2fsec", 0, (pEnd.getTime() - pStart.getTime()) / 1000.0));
+        int size = ConversionService.getSuccess();
+        System.out.println(String.format("Mapping size=%d[%.2f] duration=%.2fsec", size,  (100.0 * size / ITER), (pEnd.getTime() - pStart.getTime()) / 1000.0));
         System.out.println("Not matched hotels:");
     }
 }

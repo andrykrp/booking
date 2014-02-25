@@ -14,6 +14,8 @@ public class HotelComparator {
     }
 
     public HotelData match(HotelData data, List<HotelData> o2) {
+        if (data == null)
+            return null;
         for (HotelData data2 : o2) {
             int success = 0;
             for (Matcher matcher : arr)

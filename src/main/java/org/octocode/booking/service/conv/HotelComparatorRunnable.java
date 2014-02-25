@@ -21,11 +21,12 @@ public class HotelComparatorRunnable implements Runnable{
     public void run() {
         for (HotelComparator comparator : comparators) {
             if (comparator.match(data, o2) != null) {
-                System.out.println("success: " + (number + 1));
+//                System.out.println("success: " + (number + 1));
+                ConversionService.incSuccess();
                 return;
             }
         }
-        System.out.println("failure: " + (number + 1));
+        System.out.println("failure: " + data);
     }
 
 }
