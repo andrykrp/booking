@@ -3,6 +3,7 @@ package org.octocode.booking.service.conv;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -53,12 +54,5 @@ public class HotelDataUtils {
         Date pEnd = new Date();
         System.out.println(String.format("Load i=%d size=%d duration=%.2fsec", i, list.size(), (pEnd.getTime() - pStart.getTime()) / 1000.0));
         return list;
-    }
-
-    public static void main(String[] args) throws Exception {
-        ConversionService service = new ConversionService();
-        List<HotelData> e = HotelData.getExpediaData();
-        List<HotelData> l = HotelData.getLateroomsData();
-        service.compare(l, e);
     }
 }

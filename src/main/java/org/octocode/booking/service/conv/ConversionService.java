@@ -1,29 +1,23 @@
 package org.octocode.booking.service.conv;
 
-import org.apache.commons.codec.StringEncoderComparator;
-import org.apache.commons.codec.language.*;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.lucene.search.spell.JaroWinklerDistance;
 import org.octocode.booking.service.conv.matcher.*;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 @Service
 public class ConversionService {
-    List<HotelComparator> comparators = new ArrayList<>();
+    private static final int NTHREDS = 20;
+    private final List<HotelComparator> comparators;
 
-    public void addComparator(HotelComparator comparator) {
-        comparators.add(comparator);
-    }
-
-    public List<HotelComparator> getComparators() {
-        return comparators;
-    }
-
-    public void compare(List<HotelData> o1, List<HotelData> o2) {
+    public ConversionService() {
+        List<HotelComparator> list = new ArrayList<>();
         Matcher lStringMatcher = new StringMatcher(0.8);
         Matcher mStringMatcher = new StringMatcher(0.9);
         Matcher hStringMatcher = new StringMatcher(0.95);
@@ -35,34 +29,39 @@ public class ConversionService {
         HotelComparator comparatorSP = new HotelComparator("string-h/postcode", hStringMatcher, postcodeMatcher);
         HotelComparator comparatorDP = new HotelComparator("string-l/distance/postcode", lStringMatcher, distanceMatcher, postcodeMatcher);
 
-        addComparator(comparatorSD);
-        addComparator(comparatorSP);
-        addComparator(comparatorDP);
+        list.add(comparatorSD);
+        list.add(comparatorSP);
+        list.add(comparatorDP);
+        comparators = Collections.unmodifiableList(list);
+    }
 
-        List<HotelData> list = new ArrayList<>();
+    public static void main(String[] args) throws Exception {
+        ConversionService service = new ConversionService();
+        List<HotelData> e = Collections.unmodifiableList(HotelData.getExpediaData());
+        List<HotelData> l = Collections.unmodifiableList(HotelData.getLateroomsData());
+        service.compare(l, e);
+    }
+
+    public void compare(final List<HotelData> o1, final List<HotelData> o2) {
+        ExecutorService executor = Executors.newFixedThreadPool(NTHREDS);
 
         Date pStart = new Date();
-        int size = 0;
-        for (int i = 0; i < 8000; i++) {
-            System.out.println("------------------------------------------------------------");
-            System.out.println("number: " + (i + 1));
-
-            boolean success = false;
-            HotelData data = o1.get(i);
-            for (HotelComparator comparator : getComparators()) {
-                if (comparator.match(data, o2) != null){
-                    success = true;
-                    size++;
-                    break;
-                }
-            }
-            if (!success)
-                list.add(data);
+        for (int i = 0; i < 100; i++) {
+            HotelComparatorRunnable worker = new HotelComparatorRunnable(comparators, o1.get(i), o2, i);
+            executor.execute(worker);
         }
+
+        executor.shutdown();
+        try {
+            boolean timeoutExceed = !executor.awaitTermination(Long.MAX_VALUE, TimeUnit.NANOSECONDS);
+            System.out.println(timeoutExceed ? "by timeout" : "by execution");
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println("Finished all threads");
+
         Date pEnd = new Date();
-        System.out.println(String.format("Mapping size=%d duration=%.2fsec", size, (pEnd.getTime() - pStart.getTime()) / 1000.0));
+        System.out.println(String.format("Mapping size=%d duration=%.2fsec", 0, (pEnd.getTime() - pStart.getTime()) / 1000.0));
         System.out.println("Not matched hotels:");
-        for (HotelData hotel : list)
-            System.out.println(hotel);
     }
 }

@@ -20,7 +20,7 @@ public class HotelComparator {
                 if (matcher.check(data, data2))
                     success++;
             if (success == arr.length){
-                System.out.println(String.format("success [%s]", title));
+//                System.out.println(String.format("success [%s]", title));
                 return data2;
             }
         }
