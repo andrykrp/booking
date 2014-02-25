@@ -1,0 +1,50 @@
+@desktop: 1100px;
+@margin: 32px;
+.cell-a-b(@a, @b) {
+  width: @desktop * @a / @b;
+}
+
+.container {
+  width: @desktop;
+  position: relative;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.clear {
+  clear: both;
+}
+
+.container {
+  div[class^='cell-'] {
+    float: left;
+  }
+  .module {
+    margin: auto @margin;
+    &.alpha {
+      margin-left: 0;
+    }
+    &.beta {
+      margin-right: 0;
+    }
+    &.psi {
+      margin-top: @margin;
+    }
+    &.omega {
+      margin-bottom: @margin;
+    }
+
+  }
+}
+
+.cell-1-1 {.cell-a-b(1, 1)}
+
+.cell-1-2 {.cell-a-b(1, 2)}
+
+.cell-1-3 {.cell-a-b(1, 3)}
+
+.cell-1-4 {.cell-a-b(1, 4)}
+
+.cell-2-3 {.cell-a-b(2, 3)}
+
+.cell-3-4 {.cell-a-b(3, 4)}

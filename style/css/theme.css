@@ -1,0 +1,90 @@
+body {
+  background-color: #ecf0f1;
+}
+a {
+  color: #1d62f0;
+}
+header {
+  background-color: #34aadc;
+}
+.button {
+  background-color: #ecf0f1;
+}
+.button.in {
+  background: transparent;
+  border: 2px solid rgba(236, 240, 241, 0.5);
+  margin-right: 1em;
+}
+.button.in:hover {
+  border-color: #ecf0f1;
+}
+.button.up {
+  background: #f1c40f;
+}
+.button.up:hover {
+  background: #d8b528;
+}
+.button.ok {
+  background: #2ecc71;
+}
+.button.ok:hover {
+  background: #47b375;
+}
+.button.close {
+  background: #e74c3c;
+}
+.button.close:hover {
+  background: #d15e52;
+}
+.button.info {
+  background: #3498db;
+}
+.button.info:hover {
+  background: #4c93c3;
+}
+.logo {
+  color: #FFF;
+}
+.map .form-search {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+.content {
+  background-color: #fff;
+}
+.content .item .title a {
+  color: #1a171b;
+}
+.booking {
+  border: 1px solid #ecf0f1;
+  border-width: 2px 0;
+  background-color: #fff;
+}
+.booking .list-booking .title {
+  border-bottom: 1px solid #1a171b;
+}
+.booking .list-booking ul li {
+  border-bottom: 1px solid #ecf0f1;
+}
+.booking .list-booking ul li a {
+  text-decoration: none;
+  color: #1a171b;
+  border-bottom: 1px solid transparent;
+}
+.booking .list-booking ul li a:hover {
+  border-bottom: 1px solid #1a171b;
+}
+#hotel-page {
+  margin-top: -130px;
+  background-color: #fff;
+}
+.hotel-form-search {
+  background-color: #ecf0f1;
+}
+.photo-gallery {
+  border: solid #ecf0f1;
+  border-width: 2px 0;
+}
+footer {
+  color: #fff;
+  background-color: #1a171b;
+}
