@@ -149,7 +149,7 @@ public class PersonController {
         Map<String, String> requestParams = new HashMap<>();
         requestParams.put("arrivalDate", "03/21/2014");
         requestParams.put("departureDate", "03/27/2014");
-        requestParams.put("hotelId", "206800");
+        requestParams.put("hotelId", "230630");
         requestParams.put("room1", "1");
 
         try {

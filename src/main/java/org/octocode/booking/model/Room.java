@@ -1,5 +1,7 @@
 package org.octocode.booking.model;
 
+import java.util.List;
+
 /**
  * @author Dmitriy Guskov
  */
@@ -12,6 +14,8 @@ public class Room {
     private String smokingPreferences;
     private String deepLink;
     private String bedType;
+    private Rate rate;
+    private List<Amenity> amenities;
 
     public String getPropertyId() {
         return propertyId;
@@ -67,5 +71,21 @@ public class Room {
 
     public void setBedType(String bedType) {
         this.bedType = bedType;
+    }
+
+    public Rate getRate() {
+        return rate;
+    }
+
+    public void setRate(Rate rate) {
+        this.rate = rate;
+    }
+
+    public List<Amenity> getAmenities() {
+        return amenities;
+    }
+
+    public void setAmenities(List<Amenity> amenities) {
+        this.amenities = amenities;
     }
 }

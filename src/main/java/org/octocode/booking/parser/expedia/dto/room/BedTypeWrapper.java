@@ -1,7 +1,9 @@
-package org.octocode.booking.parser.expedia.dto;
+package org.octocode.booking.parser.expedia.dto.room;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.util.List;
 
 /**
  * @author Dmitriy Guskov
@@ -10,13 +12,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class BedTypeWrapper {
     @JsonProperty("BedType")
-    private BedType bedType;
+    private List<BedType> bedType;
 
-    public BedType getBedType() {
+    public List<BedType> getBedType() {
         return bedType;
     }
 
-    public void setBedType(BedType bedType) {
+    public void setBedType(List<BedType> bedType) {
         this.bedType = bedType;
     }
 }

@@ -28,6 +28,8 @@ public class HotelData {
     private String longitude;
     private String thumbNailUrl;
     private String deepLink;
+    @JsonProperty("RoomRateDetailsList")
+    private RoomRateDetailsListWrapper roomRateDetailsListWrapper;
 
     public Long getOrder() {
         return order;
@@ -163,5 +165,13 @@ public class HotelData {
 
     public void setDeepLink(String deepLink) {
         this.deepLink = deepLink;
+    }
+
+    public RoomRateDetailsListWrapper getRoomRateDetailsListWrapper() {
+        return roomRateDetailsListWrapper;
+    }
+
+    public void setRoomRateDetailsListWrapper(RoomRateDetailsListWrapper roomRateDetailsListWrapper) {
+        this.roomRateDetailsListWrapper = roomRateDetailsListWrapper;
     }
 }

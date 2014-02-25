@@ -1,4 +1,4 @@
-package org.octocode.booking.parser.expedia.dto;
+package org.octocode.booking.parser.expedia.dto.room;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 

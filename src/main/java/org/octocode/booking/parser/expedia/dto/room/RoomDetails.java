@@ -1,4 +1,4 @@
-package org.octocode.booking.parser.expedia.dto;
+package org.octocode.booking.parser.expedia.dto.room;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -17,6 +17,10 @@ public class RoomDetails {
     private BedTypeWrapper bedTypeWrapper;
     private String smokingPreferences;
     private String deepLink;
+    @JsonProperty("RateInfos")
+    private RoomRateInfoWrapper roomRateInfoWrapper;
+    @JsonProperty("RoomType")
+    private RoomType roomType;
 
     public String getPropertyId() {
         return propertyId;
@@ -72,5 +76,21 @@ public class RoomDetails {
 
     public void setDeepLink(String deepLink) {
         this.deepLink = deepLink;
+    }
+
+    public RoomRateInfoWrapper getRoomRateInfoWrapper() {
+        return roomRateInfoWrapper;
+    }
+
+    public void setRoomRateInfoWrapper(RoomRateInfoWrapper roomRateInfoWrapper) {
+        this.roomRateInfoWrapper = roomRateInfoWrapper;
+    }
+
+    public RoomType getRoomType() {
+        return roomType;
+    }
+
+    public void setRoomType(RoomType roomType) {
+        this.roomType = roomType;
     }
 }

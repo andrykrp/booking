@@ -9,12 +9,11 @@ import org.octocode.booking.model.Room;
 import org.octocode.booking.parser.Parser;
 import org.octocode.booking.parser.expedia.dto.ExpediaHotelList;
 import org.octocode.booking.parser.expedia.dto.HotelData;
-import org.octocode.booking.parser.expedia.dto.HotelRates;
-import org.octocode.booking.parser.expedia.dto.RoomDetails;
+import org.octocode.booking.parser.expedia.dto.room.HotelRates;
+import org.octocode.booking.parser.expedia.dto.room.RoomDetails;
 import org.octocode.booking.parser.mapper.ExpediaHotelMapper;
 import org.octocode.booking.parser.mapper.ExpediaRoomMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -89,6 +88,7 @@ public class ExpediaParser implements Parser {
     public List<Room> getRoomRates(Map<String, String> requestParams) throws IOException {
         List<Room> rooms = new ArrayList<>();
         objectMapper.configure(DeserializationFeature.UNWRAP_ROOT_VALUE, true);
+        objectMapper.configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, true);
 
         InputStream result = client.getRoomsRates(requestParams);
         HotelRates hotelRates = objectMapper.readValue(result, HotelRates.class);

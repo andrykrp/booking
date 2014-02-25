@@ -110,7 +110,7 @@ public class ExpediaClient extends RestClient {
                     .addParameter("room1", params.get("room1"))
                     .addParameter("includeDetails", "true")
 //                    .addParameter("includeRoomImages", "true")
-                    .addParameter("options", "ROOM_AMENITIES")
+                    .addParameter("options", "HOTEL_DETAILS,ROOM_TYPES,ROOM_AMENITIES,PROPERTY_AMENITIES,HOTEL_IMAGES")
                     .addParameter("minorRev", "26")
                     .build();
         } catch (URISyntaxException e) {
