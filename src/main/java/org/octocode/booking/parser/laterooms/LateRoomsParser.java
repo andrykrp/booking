@@ -16,6 +16,7 @@ import org.springframework.stereotype.Component;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Component
 public class LateRoomsParser implements Parser {
@@ -36,7 +37,7 @@ public class LateRoomsParser implements Parser {
             client.setLocation(latitude, longitude);
         }
         catch (Exception e) {}
-        return parseHotelList();
+        return parseHotelList(null);
     }
 
     public HotelRatesData getRatesForHotel(String hotelId, String startDate, String nights)
@@ -61,10 +62,10 @@ public class LateRoomsParser implements Parser {
     }
 
     @Override
-    public List<Hotel> parseHotelList() {
+    public List<Hotel> parseHotelList(Map<String, String> params) {
         List<Hotel> hotels = new ArrayList<>();
         try {
-            InputStream sourceStream = client.getHotelList();
+            InputStream sourceStream = client.getHotelList(null);
             LOGGER.info("Input source obtained from client");
             XmlMapper xmlMapper = new XmlMapper();
             LOGGER.info("XML mapper built");

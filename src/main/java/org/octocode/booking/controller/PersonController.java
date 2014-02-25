@@ -190,7 +190,7 @@ public class PersonController {
         public String lateroomsGeo(ModelMap model) {
             List<Hotel> hotels = new ArrayList<>();
             try {
-               hotels = lateroomsParser.parseHotelList();
+               hotels = lateroomsParser.parseHotelList(null);
             } catch (Exception e) {
                 LOGGER.error("error", e);
             }

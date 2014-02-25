@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 import java.io.InputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.Map;
 
 /**
  * @author Dmitriy Guskov
@@ -49,7 +50,7 @@ public class LateroomsClient extends RestClient {
         return loadSource(uri);
     }
     @Override
-    public InputStream getHotelList() {
+    public InputStream getHotelList(Map<String, String> params) {
         URI uri = null;
         try {
             uri = new URIBuilder(url)
@@ -69,7 +70,7 @@ public class LateroomsClient extends RestClient {
     }
 
     @Override
-    public InputStream getRoomsRates() {
+    public InputStream getRoomsRates(Map<String, String> params) {
         return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 }

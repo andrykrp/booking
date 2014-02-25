@@ -108,8 +108,8 @@ public class ExpediaClient extends RestClient {
                     .addParameter("arrivalDate", params.get("arrivalDate"))
                     .addParameter("departureDate", params.get("departureDate"))
                     .addParameter("room1", params.get("room1"))
-//                    .addParameter("includeDetails", "true")
-                    .addParameter("includeRoomImages", "true")
+                    .addParameter("includeDetails", "true")
+//                    .addParameter("includeRoomImages", "true")
                     .addParameter("options", "ROOM_AMENITIES")
                     .addParameter("minorRev", "26")
                     .build();
