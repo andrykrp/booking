@@ -37,6 +37,7 @@ public class LateRoomsParser implements Parser {
             client.setLocation(latitude, longitude);
         }
         catch (Exception e) {}
+        //TODO
         return parseHotelList(null);
     }
 
@@ -65,6 +66,7 @@ public class LateRoomsParser implements Parser {
     public List<Hotel> parseHotelList(Map<String, String> params) {
         List<Hotel> hotels = new ArrayList<>();
         try {
+            //TODO
             InputStream sourceStream = client.getHotelList(null);
             LOGGER.info("Input source obtained from client");
             XmlMapper xmlMapper = new XmlMapper();
