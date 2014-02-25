@@ -14,6 +14,7 @@ import org.octocode.booking.parser.expedia.dto.RoomDetails;
 import org.octocode.booking.parser.mapper.ExpediaHotelMapper;
 import org.octocode.booking.parser.mapper.ExpediaRoomMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;

@@ -6,15 +6,14 @@ import org.octocode.booking.model.Hotel;
 import org.octocode.booking.model.Person;
 import org.octocode.booking.parser.agoda.AgodaParser;
 import org.octocode.booking.parser.expedia.ExpediaParser;
+import org.octocode.booking.parser.laterooms.LateRoomsParser;
+import org.octocode.booking.parser.laterooms.dto.HotelRatesData;
 import org.octocode.booking.parser.wego.WegoClient;
 import org.octocode.booking.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -35,6 +34,8 @@ public class PersonController {
     private PersonService personService;
     @Autowired
     private ExpediaParser expediaParser;
+    @Autowired
+    private LateRoomsParser lateroomsParser;
     @Autowired
     private AgodaParser agodaParser;
     @Autowired
@@ -122,25 +123,25 @@ public class PersonController {
     @RequestMapping("/expediaByCity")
     public String expediaByCity(ModelMap model, HttpServletRequest request) {
         List<Hotel> hotels = new ArrayList<>();
-        try {
-            Map<String, String> requestParams = new HashMap<>();
-//            requestParams.put("destinationString", request.getParameter("destinationString"));
-//            requestParams.put("countryCode", request.getParameter("countryCode"));
-//            requestParams.put("arrivalDate", request.getParameter("arrivalDate"));
-//            requestParams.put("departureDate", request.getParameter("departureDate"));
-
-            requestParams.put("destinationString", "Rome");
-            requestParams.put("countryCode", "IT");
-            requestParams.put("arrivalDate", "03/21/2014");
-            requestParams.put("departureDate", "03/27/2014");
-
-            hotels = expediaParser.parseHotelList(requestParams);
-        } catch (Exception e) {
-            LOGGER.error("error", e);
-        }
-        model.addAttribute("hotels", hotels);
-
-        return "layout/hotelsList";
+                try {
+                    Map<String, String> requestParams = new HashMap<>();
+        //            requestParams.put("destinationString", request.getParameter("destinationString"));
+        //            requestParams.put("countryCode", request.getParameter("countryCode"));
+        //            requestParams.put("arrivalDate", request.getParameter("arrivalDate"));
+        //            requestParams.put("departureDate", request.getParameter("departureDate"));
+        
+                    requestParams.put("destinationString", "Rome");
+                    requestParams.put("countryCode", "IT");
+                    requestParams.put("arrivalDate", "03/21/2014");
+                    requestParams.put("departureDate", "03/27/2014");
+        
+                    hotels = expediaParser.parseHotelList(requestParams);
+                } catch (Exception e) {
+                    LOGGER.error("error", e);
+                }
+                model.addAttribute("hotels", hotels);
+        
+                return "layout/hotelsList";;
     }
 
     @RequestMapping("/expediaHotelById")
@@ -159,4 +160,42 @@ public class PersonController {
 
         return null;
     }
+    
+    @RequestMapping("/laterooms")
+        public String laterooms(ModelMap model,
+                                @RequestParam(value = "lat", required = true) String latitude,
+                                @RequestParam(value = "long", required = true) String longitude) {
+            List<Hotel> hotels = new ArrayList<>();
+            try {
+               hotels = lateroomsParser.parseHotelList(latitude, longitude);
+            } catch (Exception e) {
+                LOGGER.error("error", e);
+            }
+            model.addAttribute("hotels", hotels);
+    
+            return "layout/hotelsList";
+        }
+    
+        @RequestMapping("/lateroomsRates")
+        public String lateroomsRates(ModelMap model) {
+            try {
+                HotelRatesData data = lateroomsParser.getRatesForHotel("152", "2014-02-26", "1");
+            } catch (Exception e) {
+                        LOGGER.error("error", e);
+            }
+            return "layout/hotelsList";
+        }
+    
+        @RequestMapping("/lateroomsGeo")
+        public String lateroomsGeo(ModelMap model) {
+            List<Hotel> hotels = new ArrayList<>();
+            try {
+               hotels = lateroomsParser.parseHotelList();
+            } catch (Exception e) {
+                LOGGER.error("error", e);
+            }
+            model.addAttribute("hotels", hotels);
+    
+            return "layout/hotelsList";
+        }
 }

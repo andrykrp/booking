@@ -6,7 +6,10 @@
 </head>
 <body>
     <c:forEach var="hotel" items="${hotels}">
-        <p>Id: <b>${hotel.hotelId}</b> Name: <b>${hotel.name}</b> - Short description: <c:out value="${hotel.shortDescription}" escapeXml="false"/> </p>
+        <p>Name: <b>${hotel.name}</b></p>
+        <p>Address: <b>${hotel.address}, ${hotel.city}, ${hotel.postalCode}, ${hotel.countryCode}</b></p>
+        <p>Short description: <c:out value="${hotel.locationDescription}" escapeXml="false"/> </p>
+        <p><img src="${hotel.thumbNailUrl}"></p>
     </c:forEach>
 </body>
 </html>
