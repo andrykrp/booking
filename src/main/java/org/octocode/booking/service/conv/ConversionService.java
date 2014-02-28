@@ -10,8 +10,8 @@ import java.util.concurrent.TimeUnit;
 
 @Service
 public class ConversionService {
-    private static final int NTHREDS = 16;
-    public static final int ITER = 36469;
+    private static final int NTHREDS = 4;
+    public static final int ITER = 6000;
     private final List<HotelComparator> comparators;
 
     private static int success = 0;
@@ -29,15 +29,22 @@ public class ConversionService {
         Matcher lStringMatcher = new StringMatcher(0.8);
         Matcher mStringMatcher = new StringMatcher(0.9);
         Matcher hStringMatcher = new StringMatcher(0.95);
-        Matcher distanceMatcher = new DistanceMatcher();
+        Matcher fStringMatcher = new StringMatcher(0.99);
+        Matcher mDistanceMatcher = new DistanceMatcher(0.4);
+        Matcher hDistanceMatcher = new DistanceMatcher(0.6);
+        Matcher fDistanceMatcher = new DistanceMatcher(1.0);
         Matcher postcodeMatcher = new PostcodeMatcher();
         Matcher phoneticMatcher = new PhoneticMatcher();
 
-        HotelComparator comparatorSD = new HotelComparator("string-m/distance", mStringMatcher, distanceMatcher);
-        HotelComparator comparatorSP = new HotelComparator("string-h/postcode", hStringMatcher, postcodeMatcher);
-        HotelComparator comparatorDP = new HotelComparator("string-l/distance/postcode", lStringMatcher, distanceMatcher, postcodeMatcher);
+        HotelComparator comparatorSD = new HotelComparator("string-m/distance", mStringMatcher, mDistanceMatcher);
+        HotelComparator comparatorSD2 = new HotelComparator("string-h/distance-h", hStringMatcher, hDistanceMatcher);
+        HotelComparator comparatorSD3 = new HotelComparator("string-f/distance-f", fStringMatcher, fDistanceMatcher);
+        HotelComparator comparatorSP = new HotelComparator("string-h/postcode", mStringMatcher, postcodeMatcher);
+        HotelComparator comparatorDP = new HotelComparator("string-l/distance/postcode", lStringMatcher, mDistanceMatcher, postcodeMatcher);
 
         list.add(comparatorSD);
+        list.add(comparatorSD2);
+        list.add(comparatorSD3);
         list.add(comparatorSP);
         list.add(comparatorDP);
         comparators = Collections.unmodifiableList(list);
