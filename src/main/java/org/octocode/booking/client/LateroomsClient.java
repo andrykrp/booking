@@ -30,15 +30,16 @@ public class LateroomsClient extends RestClient {
         longitude = longit;
     }
 
-    public InputStream getHotelRates(String hotelId, String date, String nights) {
+    public InputStream getHotelRates(Map<String, String> params) {
         URI uri = null;
         try {
             uri = new URIBuilder(url)
                     .addParameter("aid", aid)
                     .addParameter("rtype", "7")
-                    .addParameter("hids", hotelId)
-                    .addParameter("sdate", date)
-                    .addParameter("nights", nights)
+                    .addParameter("hids", params.get("hotelId"))
+                    .addParameter("sdate", params.get("arrivalDate"))
+                    .addParameter("nights", params.get("nights"))
+                    .addParameter("cur", params.get("currency"))
                     .build();
             LOGGER.info("URL built = " + uri.toString());
         } catch (URISyntaxException e) {

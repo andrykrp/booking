@@ -11,21 +11,21 @@ public class Rate {
     private String numeric_price;
     private String numeric_hotelcurrencyprice;
     private String requested_currency;
-    private String roomtype;
-    private String breakfast_included;
-    private String dinner_included;
-    private String cancellation_policy;
-    private String cancellation_days;
-    private String cancellation_hours;
-    private String room_terms;
-    private String special_offer_name;
-    private String special_offer_description;
-    private String ref;
-    private String breakfasts;
-    private String sleeps;
-    private String adults;
-    private String children;
-    private String rooms_available;
+    private String roomtype;//room level, =typename, =bed_type
+    private String breakfast_included;//room level
+    private String dinner_included;//room level
+    private String cancellation_policy;//room level
+    private String cancellation_days;//room level
+    private String cancellation_hours;//room level
+    private String room_terms;//room level
+    private String special_offer_name;//room level
+    private String special_offer_description;//room level
+    private String ref;//room level, ref
+    private String breakfasts;//not in specs
+    private String sleeps;//room level
+    private String adults;//room level
+    private String children;//room level
+    private String rooms_available;//room level
 
     public Rate() {}
 

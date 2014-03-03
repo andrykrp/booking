@@ -24,7 +24,7 @@ public class HotelRatesData {
     private String rateCurrencyCode;
     @JacksonXmlElementWrapper(localName = "hotel_rooms")
     @JacksonXmlProperty(localName = "room")
-    private List<Room> room;
+    private List<RoomDetails> roomDetails;
     private String cancellation_type;
     private String cancellation_policy;
     @JacksonXmlElementWrapper(useWrapping=false)
@@ -47,12 +47,12 @@ public class HotelRatesData {
         this.rateCurrencyCode = rateCurrencyCode;
     }
 
-    public List<Room> getRoom() {
-        return room;
+    public List<RoomDetails> getRoomDetails() {
+        return roomDetails;
     }
 
-    public void setRoom(List<Room> room) {
-        this.room = room;
+    public void setRoomDetails(List<RoomDetails> roomDetails) {
+        this.roomDetails = roomDetails;
     }
 
     public String getCancellation_type() {
